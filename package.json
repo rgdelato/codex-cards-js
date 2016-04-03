@@ -4,7 +4,8 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "webpack-dev-server --inline --history-api-fallback --content-base build"
+    "start": "webpack-dev-server --inline --history-api-fallback --content-base build",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",

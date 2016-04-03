@@ -1,3 +1,5 @@
+var path = require('path');
+
 
 module.exports = {
 
@@ -6,13 +8,17 @@ module.exports = {
 	output: {
 		path: './build',
 		filename: 'bundle.js',
-		publicPath: '/build/'
+		publicPath: '/'
 	},
 
 	module: {
 		loaders: [
 			{
 				test: /\.js$/,
+				include: [
+					path.resolve(__dirname, 'src'),
+					path.resolve(__dirname, 'test')
+				],
 				loaders: ['babel']
 			}
 		]
