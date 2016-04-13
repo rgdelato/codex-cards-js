@@ -1,4 +1,6 @@
 var path = require('path');
+// var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports = {
@@ -7,8 +9,7 @@ module.exports = {
 
 	output: {
 		path: './build',
-		filename: 'bundle.js',
-		publicPath: '/'
+		filename: 'bundle.js'
 	},
 
 	module: {
@@ -23,6 +24,16 @@ module.exports = {
 			}
 		]
 	},
+
+	plugins: [
+		// new webpack.optimize.UglifyJsPlugin(),
+		new HtmlWebpackPlugin({
+			template: './src/index.ejs',
+			xhtml: true,
+			inject: true,
+			minify: { removeComments: true, collapseWhitespace: true }
+		})
+	],
 
 	devServer: {
 		quiet: false,
