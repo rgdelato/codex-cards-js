@@ -1,6 +1,7 @@
 var path = require('path');
 // var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 
 module.exports = {
@@ -9,7 +10,8 @@ module.exports = {
 
 	output: {
 		path: './build',
-		filename: 'bundle.js'
+		filename: 'script.[hash].js',
+		publicPath: '/'
 	},
 
 	module: {
@@ -21,7 +23,9 @@ module.exports = {
 					path.resolve(__dirname, 'test')
 				],
 				loaders: ['babel']
-			}
+			},
+			{ test: /\.(scss|css)$/, loader: ExtractTextPlugin.extract("style", "css!sass") },
+			{ test: /\.json$/, loader: 'json' }
 		]
 	},
 
@@ -32,7 +36,8 @@ module.exports = {
 			xhtml: true,
 			inject: true,
 			minify: { removeComments: true, collapseWhitespace: true }
-		})
+		}),
+		new ExtractTextPlugin("style.[hash].css")
 	],
 
 	devServer: {
