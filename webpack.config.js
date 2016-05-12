@@ -1,5 +1,5 @@
 var path = require('path');
-// var webpack = require('webpack');
+var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
@@ -30,14 +30,17 @@ module.exports = {
 	},
 
 	plugins: [
-		// new webpack.optimize.UglifyJsPlugin(),
+		new webpack.optimize.OccurrenceOrderPlugin(),
 		new HtmlWebpackPlugin({
 			template: './src/index.ejs',
 			xhtml: true,
 			inject: true,
 			minify: { removeComments: true, collapseWhitespace: true }
 		}),
-		new ExtractTextPlugin("style.[hash].css")
+		new ExtractTextPlugin("style.[hash].css"),
+		new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+    })
 	],
 
 	devServer: {

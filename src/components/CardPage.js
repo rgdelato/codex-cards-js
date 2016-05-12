@@ -23,7 +23,7 @@ var CardPage = ({ route, params }) => {
 					<br />
 					<span><strong>Cost:</strong> {card.cost}</span>
 					<br />
-					<span><strong>Type/Subtypes:</strong> {card.type} - {card.subtype}</span>
+					<span><strong>Type/Subtypes:</strong> {card.type} <span>&#8212;</span> {card.subtype}</span>
 					<br />
 					<span><strong>Color/Spec:</strong> <Link to={"/color/" + card.color.toLowerCase()}>{card.color}</Link>/{card.spec}</span>
 					<br /><br />
@@ -49,7 +49,7 @@ var CardPage = ({ route, params }) => {
 							key={item.ruling}
 							style={{ marginBottom: '1em' }}
 						>
-							{item.ruling} - {item.author}
+							{item.ruling} <span>&#8212;</span> {item.author}
 						</div>
 						:
 						null
