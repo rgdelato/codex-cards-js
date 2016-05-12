@@ -30,9 +30,6 @@ let data = cardsJSON.reduce((acc, item) => {
 	cards[item.name] = item;
 
 	//
-	item.rulings = [];
-
-	//
 	if (item.spec) {
 		if (!specs[item.spec]) { specs[item.spec] = []; }
 		specs[item.spec].push(item.name);
@@ -76,7 +73,8 @@ import rulingsJSON from './json/rulings.json';
 
 let rulings = Object.keys(rulingsJSON).reduce((acc, key) => {
 	const rulingsByCard = rulingsJSON[key].reduce((acc, ruling) => {
-		acc[ruling.card] = ruling;
+		if (!acc[ruling.card]) { acc[ruling.card] = []; }
+		acc[ruling.card].push(ruling);
 		return acc;
 	}, {});
 

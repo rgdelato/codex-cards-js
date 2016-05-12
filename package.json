@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "rm -rf build && webpack-dev-server --inline --hot --history-api-fallback --content-base build",
-    "build": "rm -rf build && webpack"
+    "build": "rm -rf build && webpack && mv build/index.html build/200.html"
   },
   "repository": {
     "type": "git",

@@ -35,7 +35,7 @@ var DeckPage = ({ route, params }) => {
 					return (
 						<div key={spec} style={{ display: 'inline-block', width: '33%', verticalAlign: 'top' }}>
 							<div>
-								<img src={"http://sharp.moe:8000/static/" + hero.sirlins_filename} />
+								<img src={"http://codexcards-assets.surge.sh/images/" + hero.sirlins_filename} />
 								<Link to={"/card/" + hero.name.toLowerCase().replace(/\s/g, '_')}>{hero.name}</Link>
 							</div>
 
