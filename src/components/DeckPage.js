@@ -1,12 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 
-var DeckPage = ({ route, params}) => {
-	const { cards, specs, heroes, starters, colorToSpecs } = route.data;
-	const color = (params.color) ?
-									params.color[0].toUpperCase() + params.color.slice(1) : undefined;
-	const starter = color;
-	const deckSpecs = colorToSpecs[color];
+var DeckPage = ({ route, params }) => {
+	const { cards, specs, heroes, starters, urlColorToColor, urlColorToSpecs } = route.data;
+	const starter = urlColorToColor[params.color];
+	const deckSpecs = urlColorToSpecs[params.color];
 
 	return (
 		<div style={{ textAlign: 'center' }}>
@@ -17,11 +16,11 @@ var DeckPage = ({ route, params}) => {
 
 				<br /><br />
 
-				{starters[starter].map((cardName) => {
-					var card = cards[cardName];
+				{starters[starter].map((name) => {
+					var card = cards[name];
 					return (
 						<div key={card.name} style={{ display: 'inline-block', width: '33%', verticalAlign: 'top' }}>
-							{card.name} - <small>{card.cost}-Cost {card.type}</small>
+							<Link to={"/card/" + card.name.toLowerCase().replace(/\s/g, '_')}>{card.name}</Link> - <small>{card.cost}-Cost {card.type}</small>
 						</div>
 					);
 				})}
@@ -37,7 +36,7 @@ var DeckPage = ({ route, params}) => {
 						<div key={spec} style={{ display: 'inline-block', width: '33%', verticalAlign: 'top' }}>
 							<div>
 								<img src={"http://sharp.moe:8000/static/" + hero.sirlins_filename} />
-								{hero.name}
+								<Link to={"/card/" + hero.name.toLowerCase().replace(/\s/g, '_')}>{hero.name}</Link>
 							</div>
 
 							<br /><br />
@@ -47,7 +46,7 @@ var DeckPage = ({ route, params}) => {
 									var card = cards[name];
 									return (
 										<div key={name}>
-											{name} - <small>{card.cost}-Cost {card.type}</small>
+											<Link to={"/card/" + card.name.toLowerCase().replace(/\s/g, '_')}>{card.name}</Link> - <small>{card.cost}-Cost {card.type}</small>
 										</div>
 									);
 								})}
@@ -56,6 +55,9 @@ var DeckPage = ({ route, params}) => {
 					);
 				})}
 			</div>
+
+			<br /><br /><br /><br />
+
 		</div>
 	);
 };

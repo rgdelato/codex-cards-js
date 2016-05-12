@@ -4,6 +4,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import Layout from './components/Layout';
 import HomePage from './components/HomePage';
 import DeckPage from './components/DeckPage';
+import CardPage from './components/CardPage';
 
 import './normalize.css';
 import './global.scss';
@@ -19,45 +20,69 @@ import blackJSON   from './json/black.json';
 import whiteJSON   from './json/white.json';
 import purpleJSON  from './json/purple.json';
 
-var JSON = [].concat(heroesJSON, neutralJSON, redJSON, greenJSON, blueJSON, blackJSON, whiteJSON, purpleJSON);
+const cardsJSON = [].concat(heroesJSON, neutralJSON, redJSON, greenJSON, blueJSON, blackJSON, whiteJSON, purpleJSON);
 
-var data = JSON.reduce((acc, item) => {
-	var { cards, specs, heroes, colors, starters, colorToSpecs } = acc;
+let data = cardsJSON.reduce((acc, item) => {
+	const { cards, specs, heroes, colors, starters, urlCardToCard, urlColorToColor, urlColorToSpecs } = acc;
 
 	//
 	cards[item.name] = item;
 
 	//
+	item.rulings = [];
+
+	//
 	if (item.spec) {
 		if (!specs[item.spec]) { specs[item.spec] = []; }
 		specs[item.spec].push(item.name);
+	}
 
-		if (item.type === 'Hero') {
-			heroes[item.spec] = item.name;
-		}
+	//
+	if (item.type === 'Hero' && item.spec) {
+		heroes[item.spec] = item.name;
 	}
 
 	//
 	if (item.color) {
 		if (!colors[item.color]) { colors[item.color] = []; }
 		colors[item.color].push(item.name);
-
-		if (item.spec) {
-			if (!colorToSpecs[item.color]) { colorToSpecs[item.color] = []; }
-			if (!colorToSpecs[item.color].includes(item.spec)) { colorToSpecs[item.color].push(item.spec); }
-		}
 	}
 
 	//
-	if (item.starting_zone === 'deck') {
+	if (item.starting_zone === 'deck' && item.color) {
 		if (!starters[item.color]) { starters[item.color] = []; }
 		starters[item.color].push(item.name);
 	}
 
-	return acc;
-}, { cards: {}, specs: {}, heroes: {}, colors: {}, starters: {}, colorToSpecs: {} });
+	//
+	const urlName = item.name.toLowerCase().replace(/\s/g, '_');
+	urlCardToCard[urlName] = item.name;
 
-// console.log('data', data);
+	if (item.color && item.spec) {
+		const urlColor = item.color.toLowerCase();
+		urlColorToColor[urlColor] = item.color;
+
+		if (!urlColorToSpecs[urlColor]) { urlColorToSpecs[urlColor] = []; }
+		if (!urlColorToSpecs[urlColor].includes(item.spec)) { urlColorToSpecs[urlColor].push(item.spec); }
+	}
+
+	return acc;
+}, { cards: {}, specs: {}, heroes: {}, colors: {}, starters: {}, urlCardToCard: {}, urlColorToColor: {}, urlColorToSpecs: {} });
+
+
+
+import rulingsJSON from './json/rulings.json';
+
+let rulings = Object.keys(rulingsJSON).reduce((acc, key) => {
+	const rulingsByCard = rulingsJSON[key].reduce((acc, ruling) => {
+		acc[ruling.card] = ruling;
+		return acc;
+	}, {});
+
+	return Object.assign(acc, rulingsByCard);
+}, {});
+
+data.rulings = rulings;
 
 
 
@@ -67,6 +92,7 @@ ReactDOM.render(
 			<IndexRoute component={HomePage} />
 			<Route path="/color/:color" component={DeckPage} data={data} />
 			<Route path="/deck/:color/:spec1/:spec2/:spec3" component={DeckPage} data={data} />
+			<Route path="/card/:card" component={CardPage} data={data} />
 		</Route>
 	</Router>,
 	document.getElementById('root')
