@@ -1,4 +1,85 @@
 
 body {
+	font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
 	line-height: 1.625;
+}
+
+h1 {
+	border-bottom: 1px solid #eee;
+}
+
+a {
+	text-decoration: none;
+}
+
+blockquote {
+	margin: 16px 16px 16px 0;
+	padding: 0 15px;
+	border-left: 4px solid #ddd;
+}
+
+.header {
+	height: 50px;
+	padding: 0 2em;
+	background-color: rgba(0,0,0,0.06);
+	line-height: 50px;
+}
+
+.content {
+	margin: 0 auto;
+}
+
+.home-page {
+	width: 80%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.banner {
+	padding: 0.625em;
+}
+
+.deck-page {
+	text-align: center;
+}
+
+.search-input {
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+	// margin-bottom: 0.75em;
+	border: 1px solid #DDD;
+	border-radius: 3px;
+	padding: 0.5em 0.5em;
+	font-size: 1em;
+	background-color: white;
+	box-shadow: inset 0 1px 3px rgba(0,0,0,0.06);
+	transition: border-color;
+}
+
+.search-results {
+	border-width: 0 1px 1px 1px;
+	border-style: solid;
+	border-color: #DDD;
+}
+
+.card-image {
+	width: 330px;
+	height: 450px;
+	// outline: 1px solid black;
+}
+
+.card-info {
+	display: inline-block;
+	box-sizing: border-box;
+	width: 495px;
+	height: 450px;
+	padding: 16px;
+	text-align: left;
+	vertical-align: top;
+}
+
+.card-flavor {
+	margin-bottom: 16px;
+	font-style: italic;
 }

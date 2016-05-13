@@ -20,11 +20,27 @@ import blueJSON    from './json/blue.json';
 import blackJSON   from './json/black.json';
 import whiteJSON   from './json/white.json';
 import purpleJSON  from './json/purple.json';
+import rulingsJSON from './json/rulings.json';
+
+
+const rulings = Object.keys(rulingsJSON).reduce((acc, key) => {
+	const rulingsByCard = rulingsJSON[key].reduce((acc, ruling) => {
+		if (!acc[ruling.card]) { acc[ruling.card] = []; }
+		acc[ruling.card].push(ruling);
+		return acc;
+	}, {});
+
+	return {...acc, ...rulingsByCard};
+}, {});
+
 
 const cardsJSON = [].concat(heroesJSON, neutralJSON, redJSON, greenJSON, blueJSON, blackJSON, whiteJSON, purpleJSON);
 
 let data = cardsJSON.reduce((acc, item) => {
 	const { cards, specs, heroes, colors, starters, urlCardToCard, urlColorToColor, urlColorToSpecs } = acc;
+
+	//
+	item.rulings = rulings[item.name];
 
 	//
 	cards[item.name] = item;
@@ -69,28 +85,12 @@ let data = cardsJSON.reduce((acc, item) => {
 
 
 
-import rulingsJSON from './json/rulings.json';
-
-let rulings = Object.keys(rulingsJSON).reduce((acc, key) => {
-	const rulingsByCard = rulingsJSON[key].reduce((acc, ruling) => {
-		if (!acc[ruling.card]) { acc[ruling.card] = []; }
-		acc[ruling.card].push(ruling);
-		return acc;
-	}, {});
-
-	return Object.assign(acc, rulingsByCard);
-}, {});
-
-data.rulings = rulings;
-
-
-
 ReactDOM.render(
 	<Router history={browserHistory}>
 		<Route path="/" component={Layout}>
-			<IndexRoute component={HomePage} />
+			<IndexRoute component={HomePage} data={data} />
 			<Route path="/color/:color" component={DeckPage} data={data} />
-			<Route path="/deck/:color/:spec1/:spec2/:spec3" component={DeckPage} data={data} />
+			<Route path="/deck/:spec1/:spec2/:spec3" component={DeckPage} data={data} />
 			<Route path="/card/:card" component={CardPage} data={data} />
 			<Route path="*" component={NotFoundPage}/>
 		</Route>

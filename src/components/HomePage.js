@@ -1,40 +1,48 @@
 import React from 'react';
 import { Link } from 'react-router';
+import Search from './Search';
 
 
-var HomePage = () => {
+var HomePage = (props) => {
 	return (
-		<div style={{ textAlign: 'center' }}>
+		<div className="home-page">
 
 			<br /><br />
 
-			<div style={{ width: '50%', margin: '0 auto', border: '1px solid black', padding: '4em' }}>
-				Logo
-			</div>
-
-			<br /><br /><br /><br />
-
 			<div>
-				<input type="text" placeholder="Search..."
-					style={{ width: '80%', padding: '2px 4px', fontSize: '1.5em' }}
-				/>
-
-				<br />
-
-				<a href="/search"><small>Advanced Search...</small></a>
+				<h1>Codex Card Rulings</h1>
 			</div>
 
-			<br /><br /><br /><br />
+			<br /><br />
 
-			<div>
-				{['Red', 'Green', 'Blue', 'Black', 'White', 'Purple'].map((color) => (
-					<div key={color}
-						style={{ display: 'inline-block', width: '33%', paddingBottom: '1em', verticalAlign: 'top' }}
-					>
-						<Link to={"/color/" + color.toLowerCase()}>{color}</Link>
-					</div>
-				))}
+			<Search data={props.route.data} />
+
+			<br /><br />
+
+			<div className="banners">
+				<div className="banner starter-banner">
+					<Link to="/color/neutral">Bashing vs. Finesse</Link>
+				</div>
+
+				<div className="banner core-banner">
+					<span><Link to="/color/red">Blood Anarchs</Link></span>
+					<span> vs. </span>
+					<span><Link to="/color/green">Moss Sentinels</Link></span>
+				</div>
+
+				<div className="banner core-banner">
+					<span><Link to="/color/blue">Flagstone Dominion</Link></span>
+					<span> vs. </span>
+					<span><Link to="/color/black">Blackhand Scourge</Link></span>
+				</div>
+
+				<div className="banner core-banner">
+					<span><Link to="/color/white">Whitestar Order</Link></span>
+					<span> vs. </span>
+					<span><Link to="/color/purple">Vortoss Conclave</Link></span>
+				</div>
 			</div>
+
 		</div>
 	);
 };

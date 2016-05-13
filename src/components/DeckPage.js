@@ -8,7 +8,10 @@ var DeckPage = ({ route, params }) => {
 	const deckSpecs = urlColorToSpecs[params.color];
 
 	return (
-		<div style={{ textAlign: 'center' }}>
+		<div className="deck-page">
+
+		<br />
+
 			<div className="starter">
 				<div style={{ display: 'inline-block', border: '1px solid black', borderRadius: '4px', padding: '8px' }}>
 					{starter} Starter
@@ -34,10 +37,12 @@ var DeckPage = ({ route, params }) => {
 					var cardNames = specs[spec].filter((name) => (name !== hero.name));
 					return (
 						<div key={spec} style={{ display: 'inline-block', width: '33%', verticalAlign: 'top' }}>
-							<div>
-								<img src={"http://codexcards-assets.surge.sh/images/" + hero.sirlins_filename} />
-								<Link to={"/card/" + hero.name.toLowerCase().replace(/\s/g, '_')}>{hero.name}</Link>
+							<div className="card-image-container">
+								<img className="card-image" src={"http://codexcards-assets.surge.sh/images/" + hero.sirlins_filename} />
 							</div>
+
+							<br />
+							<Link to={"/card/" + hero.name.toLowerCase().replace(/\s/g, '_')}>{hero.name}</Link>
 
 							<br /><br />
 
@@ -55,8 +60,6 @@ var DeckPage = ({ route, params }) => {
 					);
 				})}
 			</div>
-
-			<br /><br /><br /><br />
 
 		</div>
 	);

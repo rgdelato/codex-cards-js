@@ -6,11 +6,13 @@ var Layout = (props) => {
 	return (
 		<div>
 			<div className="header">
-				<Link to="/">Home</Link>
+				<Link to="/">Codex Cards</Link>
 			</div>
 			<div className="content">
 				{props.children}
 			</div>
+
+			<br /><br />
 		</div>
 	);
 };
