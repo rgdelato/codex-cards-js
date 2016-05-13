@@ -57,6 +57,7 @@ var CardPage = ({ route, params }) => {
 
 					<div>
 						<Link to={"/color/" + card.color.toLowerCase()}>{card.color}</Link>
+
 						{(card.spec) ? (
 							<span>
 								<span>{' \u2022 '}</span>
@@ -72,14 +73,13 @@ var CardPage = ({ route, params }) => {
 							<span> Tech II</span>
 						) : (card.tech_level === 3) ? (
 							<span> Tech III</span>
-						) : (card.type === 'Spell') ? (
+						) : (card.type === 'Spell' || card.type === 'Minor Spell') ? (
 							<span> Magic</span>
 						) : (card.type === 'Ultimate Spell') ? (
 							<span> Ultimate Magic</span>
 						) : (card.type === 'Hero') ? (
 							<span> Hero</span>
 						) : null}
-
 					</div>
 				</div>
 			</div>
