@@ -9,13 +9,13 @@ var CardPage = ({ route, params }) => {
 
 	return (
 		<div className="card-page">
-			<div style={{ boxSizing: 'border-box', width: '825px', margin: '0 auto', padding: '0 16px' }}>
+			<div className="card-title">
 				<h1>{cardName}</h1>
 			</div>
 
 			<div style={{ textAlign: 'center' }}>
-				<div className="card-image-container" style={{ display: 'inline-block', width: '330px', height: '450px', verticalAlign: 'top' }}>
-					<img className="card-image" src={"http://codexcards-assets.surge.sh/images/" + card.sirlins_filename} />
+				<div className="card-image">
+					<img src={"http://codexcards-assets.surge.sh/images/" + card.sirlins_filename} />
 				</div>
 
 				<div className="card-info">
@@ -85,7 +85,7 @@ var CardPage = ({ route, params }) => {
 			</div>
 
 			{(card.rulings && card.rulings[0].ruling) ? (
-				<div style={{ boxSizing: 'border-box', width: '825px', margin: '0 auto', padding: '0 16px' }}>
+				<div className="card-rulings">
 					<h2>Card Rulings</h2>
 					{card.rulings.map((item) => {
 						return ((item.ruling) ?

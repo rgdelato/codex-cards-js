@@ -1,6 +1,6 @@
 
 body {
-	font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+	font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
 	line-height: 1.625;
 }
 
@@ -20,7 +20,7 @@ blockquote {
 
 .header {
 	height: 50px;
-	padding: 0 2em;
+	padding: 0 1em;
 	background-color: rgba(0,0,0,0.06);
 	line-height: 50px;
 }
@@ -30,7 +30,7 @@ blockquote {
 }
 
 .home-page {
-	width: 80%;
+	width: 85%;
 	margin: 0 auto;
 	text-align: center;
 }
@@ -41,6 +41,11 @@ blockquote {
 
 .deck-page {
 	text-align: center;
+}
+
+.search-container {
+	position: relative;
+	margin: 2em 0;
 }
 
 .search-input {
@@ -58,15 +63,35 @@ blockquote {
 }
 
 .search-results {
+	position: absolute;
+	width: 100%;
 	border-width: 0 1px 1px 1px;
 	border-style: solid;
 	border-color: #DDD;
+	background-color: white;
+}
+
+.card-title {
+	box-sizing: border-box;
+	width: 825px;
+	margin: 0 auto;
+	padding: 0 16px;
 }
 
 .card-image {
+	display: inline-block;
 	width: 330px;
 	height: 450px;
-	// outline: 1px solid black;
+	vertical-align: top;
+
+	@media (max-width: 330px) {
+		width: 100%;
+		height: auto;
+	}
+}
+
+.card-image img {
+	width: 100%;
 }
 
 .card-info {
@@ -77,9 +102,28 @@ blockquote {
 	padding: 16px;
 	text-align: left;
 	vertical-align: top;
+
+	@media (max-width: 825px) {
+		width: 100%;
+		max-width: 660px;
+		height: auto;
+	}
 }
 
 .card-flavor {
 	margin-bottom: 16px;
 	font-style: italic;
+}
+
+.card-rulings {
+	box-sizing: border-box;
+	max-width: 825px;
+	margin: 0 auto;
+	padding: 0 16px;
+
+	@media (max-width: 825px) {
+		width: 100%;
+		max-width: 660px;
+		height: auto;
+	}
 }

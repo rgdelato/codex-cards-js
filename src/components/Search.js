@@ -30,13 +30,11 @@ class Search extends React.Component {
 		}
 
 		return (
-			<div>
-				<div className="search-container">
-					<input className="search-input" type="text" placeholder="Search for a card..."
-						value={this.state.searchText}
-						onChange={this.handleChange}
-					/>
-				</div>
+			<div className="search-container">
+				<input className="search-input" type="text" placeholder="Search for a card..."
+					value={this.state.searchText}
+					onChange={this.handleChange}
+				/>
 
 				{(results.length) ? (
 					<div className="search-results">

@@ -7,17 +7,11 @@ var HomePage = (props) => {
 	return (
 		<div className="home-page">
 
-			<br /><br />
-
 			<div>
 				<h1>Codex Card Rulings</h1>
 			</div>
 
-			<br /><br />
-
 			<Search data={props.route.data} />
-
-			<br /><br />
 
 			<div className="banners">
 				<div className="banner starter-banner">
