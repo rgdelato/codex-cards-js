@@ -22,44 +22,53 @@ var DeckPage = ({ route, params }) => {
 		<div className="deck-page">
 
 			<div className="starter">
-				<div style={{ display: 'inline-block', border: '1px solid black', borderRadius: '4px', padding: '8px' }}>
-					{starter} Starter
+				<div className="worker-image" style={{ display: 'inline-block', verticalAlign: 'top' }}>
+					<div style={{display: 'table'}}>
+						<div style={{display: 'table-cell', width: '330px', height: '450px', verticalAlign: 'middle'}}>
+							<h2>{starter} Starter</h2>
+						</div>
+					</div>
 				</div>
 
-				<div></div>
-
-
-				{starters[starter].map((name) => {
-					var card = cards[name];
-					return (
-						<div key={card.name} style={{ display: 'inline-block', width: '33%', verticalAlign: 'top' }}>
-							<small>{card.cost}</small> - <Link to={"/card/" + toURL(card.name)}>{card.name}</Link> - <small>{card.type}</small>
+				<div className="starter-deck-list" style={{ display: 'inline-block', verticalAlign: 'top' }}>
+					<div style={{display: 'table'}}>
+						<div style={{display: 'table-cell', width: '330px', height: '450px', verticalAlign: 'middle', textAlign: 'left'}}>
+							<blockquote>
+								{starters[starter].map((name) => {
+									var card = cards[name];
+									return (
+										<div key={card.name}>
+											<Link to={"/card/" + toURL(card.name)}>{card.name}</Link> - <small>{card.type}</small>
+										</div>
+									);
+								})}
+							</blockquote>
 						</div>
-					);
-				})}
+					</div>
+				</div>
 			</div>
 
 			<div className="specs">
 				{deckSpecs.map((spec) => {
 					var hero = cards[heroes[spec]];
-					var cardNames = specs[spec].filter((name) => (name !== hero.name));
+					var cardNames = specs[spec];
 					return (
-						<div key={spec} style={{ display: 'inline-block', width: '33%', verticalAlign: 'top' }}>
+						<div className="spec" key={spec} style={{ display: 'inline-block', width: '33%', verticalAlign: 'top' }}>
 							<div className="card-image-container">
-								<img className="card-image" src={"http://codexcards-assets.surge.sh/images/" + hero.sirlins_filename} />
+								<Link to={"/card/" + toURL(hero.name)}><img className="card-image" src={"http://codexcards-assets.surge.sh/images/" + hero.sirlins_filename} /></Link>
 							</div>
 
-							<Link to={"/card/" + toURL(hero.name)}>{hero.name}</Link>
-
-							<div>
+							<div className="spec-deck-list" style={{padding: '0 16px', textAlign: 'left'}}>
+							<blockquote>
 								{cardNames.map((name) => {
 									var card = cards[name];
 									return (
-										<div key={name}>
-											<small>{card.cost}</small> -  <Link to={"/card/" + toURL(card.name)}>{card.name}</Link> - <small>{card.type}</small>
+										<div key={name} style={{whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'}}>
+											<Link to={"/card/" + toURL(card.name)}>{card.name}</Link> - <small>{card.type}</small>
 										</div>
 									);
 								})}
+							</blockquote>
 							</div>
 						</div>
 					);
