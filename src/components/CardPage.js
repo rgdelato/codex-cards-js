@@ -86,7 +86,7 @@ var CardPage = ({ route, params }) => {
 							<span> Tech III</span>
 						) : (card.type === 'Spell' || card.type === 'Minor Spell') ? (
 							<span> Magic</span>
-						) : (card.type === 'Ultimate Spell') ? (
+						) : (card.type === 'Ultimate Spell' || card.type === 'Ultimate Ongoing Spell') ? (
 							<span> Ultimate Magic</span>
 						) : (card.type === 'Hero') ? (
 							<span> Hero</span>
@@ -99,14 +99,16 @@ var CardPage = ({ route, params }) => {
 				<div className="card-rulings">
 					<h2>Card-Specific Rulings</h2>
 					{card.rulings.map((item) => {
-						return (item.ruling) ? (
-							<div className="card-ruling" key={item.ruling}>
-								{item.ruling} {(item.author) ? <span>&#8212; {item.author}</span> : null}
-							</div>
-						) : ( null );
+						return (
+							(item.ruling) ? (
+								<div className="card-ruling" key={item.ruling}>
+									{item.ruling} {(item.author) ? <span>&#8212; {item.author}</span> : null}
+									</div>
+								) : null
+							);
 					})}
 				</div>
-			) : ( null )}
+			) : null}
 
 			{(card.keywords && card.keywords.length) ? (
 				card.keywords.map((keyword) => {
@@ -127,7 +129,7 @@ var CardPage = ({ route, params }) => {
 						);
 					} else { return null; }
 				})
-			) : ( null )}
+			) : null}
 
 			<div style={{ display: 'none', margin: '4em 0' }}>
 				<xmp>{JSON.stringify(card, null, '  ')}</xmp>
