@@ -109,7 +109,7 @@ var CardPage = ({ route, params }) => {
 									return (
 										(item.ruling) ? (
 											<div className="card-ruling" key={item.ruling}>
-												{item.ruling} {(item.author) ? <span>&#8212; {item.author}</span> : null}
+												{item.ruling} {(item.author) ? <span>&#8212;&#0160;{item.author}</span> : null}
 												</div>
 											) : null
 										);
@@ -129,7 +129,7 @@ var CardPage = ({ route, params }) => {
 												if (item.ruling) {
 													return (
 														<div className="card-ruling" key={item.ruling}>
-															{item.ruling} {(item.author) ? <span>&#8212;{item.author}</span> : null}
+															{item.ruling} {(item.author) ? <span>&#8212;&#0160;{item.author}</span> : null}
 														</div>
 													);
 												} else { return null; }
