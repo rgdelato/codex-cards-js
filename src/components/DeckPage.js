@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { toURL } from '../utils';
 
 
 var DeckPage = ({ route, params }) => {
@@ -23,7 +24,7 @@ var DeckPage = ({ route, params }) => {
 					var card = cards[name];
 					return (
 						<div key={card.name} style={{ display: 'inline-block', width: '33%', verticalAlign: 'top' }}>
-							<Link to={"/card/" + card.name.toLowerCase().replace(/\s/g, '_')}>{card.name}</Link> - <small>{card.cost}-Cost {card.type}</small>
+							<Link to={"/card/" + toURL(card.name)}>{card.name}</Link> - <small>{card.cost}-Cost {card.type}</small>
 						</div>
 					);
 				})}
@@ -42,7 +43,7 @@ var DeckPage = ({ route, params }) => {
 							</div>
 
 							<br />
-							<Link to={"/card/" + hero.name.toLowerCase().replace(/\s/g, '_')}>{hero.name}</Link>
+							<Link to={"/card/" + toURL(hero.name)}>{hero.name}</Link>
 
 							<br /><br />
 
@@ -51,7 +52,7 @@ var DeckPage = ({ route, params }) => {
 									var card = cards[name];
 									return (
 										<div key={name}>
-											<Link to={"/card/" + card.name.toLowerCase().replace(/\s/g, '_')}>{card.name}</Link> - <small>{card.cost}-Cost {card.type}</small>
+											<Link to={"/card/" + toURL(card.name)}>{card.name}</Link> - <small>{card.cost}-Cost {card.type}</small>
 										</div>
 									);
 								})}

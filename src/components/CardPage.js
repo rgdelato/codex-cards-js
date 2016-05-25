@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { toURL } from '../utils';
 
 
 var CardPage = ({ route, params }) => {
@@ -31,8 +32,14 @@ var CardPage = ({ route, params }) => {
 								<span>{card.subtype}</span>
 							</span>
 						) : null}
-						{' \u2022 '}
-						<span>Cost: {card.cost}</span>
+
+						{(card.cost) ? (
+							<span>
+								<span>{' \u2022 '}</span>
+								<span>Cost: {card.cost}</span>
+							</span>
+						) : null}
+
 						{(card.ATK || card.HP) ? (
 							<span>
 								<span>{' \u2022 '}</span>
@@ -60,7 +67,7 @@ var CardPage = ({ route, params }) => {
 					) : null}
 
 					<div>
-						<Link to={"/color/" + card.color.toLowerCase()}>{card.color}</Link>
+						<Link to={"/color/" + toURL(card.color)}>{card.color}</Link>
 
 						{(card.spec) ? (
 							<span>

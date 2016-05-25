@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { toURL } from '../utils';
 
 
 class Search extends React.Component {
@@ -17,7 +18,7 @@ class Search extends React.Component {
 
 	handleEnterKey (name) {
 		if (name) {
-			window.location = '/card/' + name.toLowerCase().replace(/\s/g, '_');
+			window.location = '/card/' + toURL(name);
 		}
 	}
 
@@ -49,7 +50,7 @@ class Search extends React.Component {
 					<div className="search-results">
 						{results.slice(0, 10).map((name) => (
 							<div className="search-result" key={name}>
-								<Link to={"/card/" + name.toLowerCase().replace(/\s/g, '_')}>{name}</Link>
+								<Link to={"/card/" + toURL(name)}>{name}</Link>
 							</div>
 						))}
 					</div>

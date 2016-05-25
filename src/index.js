@@ -10,11 +10,7 @@ import NotFoundPage from './components/NotFoundPage';
 import './normalize.css';
 import './global.scss';
 
-
-
 import data from './cardData.json';
-
-
 
 ReactDOM.render(
 	<Router history={browserHistory}>
