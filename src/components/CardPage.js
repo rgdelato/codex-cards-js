@@ -84,7 +84,7 @@ var CardPage = ({ route, params }) => {
 							<span> Tech II</span>
 						) : (card.tech_level === 3) ? (
 							<span> Tech III</span>
-						) : (card.type === 'Spell' || card.type === 'Minor Spell') ? (
+						) : (card.type === 'Spell' || card.type === 'Ongoing Spell' || card.type === 'Minor Spell' || card.type === 'Minor Ongoing Spell') ? (
 							<span> Magic</span>
 						) : (card.type === 'Ultimate Spell' || card.type === 'Ultimate Ongoing Spell') ? (
 							<span> Ultimate Magic</span>

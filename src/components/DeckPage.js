@@ -13,9 +13,18 @@ var DeckPage = ({ route, params }) => {
 	if (spec1 && spec2 && spec3) {
 		starter = urlSpecToColor[spec1];
 		deckSpecs = [ urlSpecToSpec[spec1], urlSpecToSpec[spec2], urlSpecToSpec[spec3] ];
+
+		if (!deckSpecs[0] || !deckSpecs[1] || !deckSpecs[2]) {
+			window.location.replace('/404');
+		}
+
 	} else if (color) {
 		starter = urlColorToColor[params.color];
 		deckSpecs = urlColorToSpecs[params.color];
+
+		if (!starter || !deckSpecs) {
+			window.location.replace('/404');
+		}
 	}
 
 	return (
