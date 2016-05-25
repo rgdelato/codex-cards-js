@@ -22,22 +22,22 @@ var DeckPage = ({ route, params }) => {
 		<div className="deck-page">
 
 			<div className="starter">
-				<div className="worker-image" style={{ display: 'inline-block', verticalAlign: 'top' }}>
+				<div className="worker-image">
 					<div className="table-hack">
-						<div className="table-cell-hack" style={{ width: '330px', height: '450px' }}>
+						<div className="card-size table-cell-hack">
 							<h2>{starter} Starter</h2>
 						</div>
 					</div>
 				</div>
 
-				<div className="starter-list" style={{ display: 'inline-block', verticalAlign: 'top' }}>
+				<div className="starter-list">
 					<div className="table-hack">
-						<div className="table-cell-hack" style={{ width: '330px', height: '450px' }}>
+						<div className="card-size table-cell-hack">
 							<blockquote>
 								{starters[starter].map((name) => {
 									var card = cards[name];
 									return (
-										<div key={card.name}>
+										<div className="ellipsis" key={card.name}>
 											<Link to={"/card/" + toURL(card.name)}>{card.name}</Link> - <small>{card.type}</small>
 										</div>
 									);
@@ -53,7 +53,7 @@ var DeckPage = ({ route, params }) => {
 					var hero = cards[heroes[spec]];
 					var cardNames = specs[spec];
 					return (
-						<div className="spec" key={spec} style={{ display: 'inline-block', verticalAlign: 'top' }}>
+						<div className="spec" key={spec}>
 							<div className="card-image-container">
 								<Link to={"/card/" + toURL(hero.name)}><img className="card-image" src={"http://codexcards-assets.surge.sh/images/" + hero.sirlins_filename} /></Link>
 							</div>
@@ -63,7 +63,7 @@ var DeckPage = ({ route, params }) => {
 									{cardNames.map((name) => {
 										var card = cards[name];
 										return (
-											<div key={name} style={{whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'}}>
+											<div className="ellipsis" key={name}>
 												<Link to={"/card/" + toURL(card.name)}>{card.name}</Link> - <small>{card.type}</small>
 											</div>
 										);

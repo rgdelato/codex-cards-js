@@ -18,6 +18,12 @@ blockquote {
 	border-left: 4px solid #ddd;
 }
 
+.ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
 .header {
 	height: 50px;
 	padding: 0 1em;
@@ -81,11 +87,34 @@ blockquote {
 	vertical-align: middle;
 }
 
+.card-size.table-cell-hack {
+	width: 298px;
+	height: 450px;
+}
+
+.worker-image,
+.starter-list,
+.spec {
+	display: inline-block;
+	vertical-align: top;
+}
+
 .starter-list,
 .spec-list {
 	box-sizing: border-box;
 	padding: 0 16px;
 	text-align: left;
+}
+
+.worker-image,
+.starter-list {
+	@media (max-width: 660px) {
+
+		.card-size {
+			margin: 16px;
+			height: auto;
+		}
+	}
 }
 
 .spec {
