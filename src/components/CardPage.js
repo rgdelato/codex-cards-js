@@ -93,10 +93,7 @@ var CardPage = ({ route, params }) => {
 					<h2>Card Rulings</h2>
 					{card.rulings.map((item) => {
 						return ((item.ruling) ?
-							<div
-								key={item.ruling}
-								style={{ marginBottom: '1em' }}
-							>
+							<div className="card-ruling" key={item.ruling}>
 								{item.ruling} <span>&#8212;</span> {item.author}
 							</div>
 							:
@@ -104,12 +101,11 @@ var CardPage = ({ route, params }) => {
 						);
 					})}
 				</div>
-			): (
+			) : (
 				null
 			)}
 
-			<div style={{ display: 'none' }}>
-				<br /><br />
+			<div style={{ display: 'none', margin: '4em 0' }}>
 				<xmp>{JSON.stringify(card, null, '  ')}</xmp>
 			</div>
 

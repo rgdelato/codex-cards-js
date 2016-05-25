@@ -1,14 +1,14 @@
 var fs = require('fs');
 
-var heroesJSON  = require('./src/json/heroes.json');
-var neutralJSON = require('./src/json/neutral.json');
-var redJSON     = require('./src/json/red.json');
-var greenJSON   = require('./src/json/green.json');
-var blueJSON    = require('./src/json/blue.json');
-var blackJSON   = require('./src/json/black.json');
-var whiteJSON   = require('./src/json/white.json');
-var purpleJSON  = require('./src/json/purple.json');
-var rulingsJSON = require('./src/json/rulings.json');
+var heroesJSON  = require('./json/heroes.json');
+var neutralJSON = require('./json/neutral.json');
+var redJSON     = require('./json/red.json');
+var greenJSON   = require('./json/green.json');
+var blueJSON    = require('./json/blue.json');
+var blackJSON   = require('./json/black.json');
+var whiteJSON   = require('./json/white.json');
+var purpleJSON  = require('./json/purple.json');
+var rulingsJSON = require('./json/rulings.json');
 
 
 
