@@ -72,6 +72,26 @@ blockquote {
 	background-color: white;
 }
 
+.table-hack {
+	display: table;
+}
+
+.table-cell-hack {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.starter-list,
+.spec-list {
+	box-sizing: border-box;
+	padding: 0 16px;
+	text-align: left;
+}
+
+.spec {
+	max-width: 330px;
+}
+
 .card-title {
 	box-sizing: border-box;
 	max-width: 825px;
