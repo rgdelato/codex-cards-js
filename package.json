@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "start": "rm -rf build && babel-node createCardDataJSON.js && webpack-dev-server --inline --hot --history-api-fallback --content-base build",
-    "build": "rm -rf build && babel-node createCardDataJSON.js && NODE_ENV=production webpack -p && mv build/index.html build/200.html"
+    "build": "rm -rf build && babel-node createCardDataJSON.js && NODE_ENV=production webpack -p && mv build/index.html build/200.html",
+    "deploy": "npm run build && cp CNAME build/CNAME && cd build && surge"
   },
   "repository": {
     "type": "git",
