@@ -21,6 +21,7 @@ class Search extends React.Component {
 		let results = [];
 
 		if (searchText) {
+			// TODO: un-roll to a loop and kill the filter early if there are too many results
 			results = Object.keys(cards).filter((key) => {
 				if (key.toLowerCase().indexOf(searchText.toLowerCase()) !== -1) {
 					return true;
@@ -31,7 +32,7 @@ class Search extends React.Component {
 
 		return (
 			<div className="search-container">
-				<input className="search-input" type="text" placeholder="Search for a card..."
+				<input className="search-input" type="text" placeholder="Search for a card by name..."
 					value={this.state.searchText}
 					onChange={this.handleChange}
 				/>

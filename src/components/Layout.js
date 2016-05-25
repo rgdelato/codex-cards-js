@@ -11,8 +11,6 @@ var Layout = (props) => {
 			<div className="content">
 				{props.children}
 			</div>
-
-			<br /><br />
 		</div>
 	);
 };

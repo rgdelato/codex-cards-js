@@ -26,11 +26,12 @@ blockquote {
 }
 
 .content {
-	margin: 0 auto;
+	margin: 0 auto 2em;
 }
 
 .home-page {
 	width: 85%;
+	max-width: 825px;
 	margin: 0 auto;
 	text-align: center;
 }
@@ -45,7 +46,7 @@ blockquote {
 
 .search-container {
 	position: relative;
-	margin: 2em 0;
+	margin: 4em 0;
 }
 
 .search-input {
