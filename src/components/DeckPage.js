@@ -4,33 +4,40 @@ import { toURL } from '../utils';
 
 
 var DeckPage = ({ route, params }) => {
-	const { cards, specs, heroes, starters, urlColorToColor, urlColorToSpecs } = route.data;
-	const starter = urlColorToColor[params.color];
-	const deckSpecs = urlColorToSpecs[params.color];
+	const { cards, specs, heroes, starters, urlColorToColor, urlColorToSpecs, urlSpecToSpec, urlSpecToColor } = route.data;
+
+	const { color, spec1, spec2, spec3 } = params;
+	let starter;
+	let deckSpecs;
+
+	if (spec1 && spec2 && spec3) {
+		starter = urlSpecToColor[spec1];
+		deckSpecs = [ urlSpecToSpec[spec1], urlSpecToSpec[spec2], urlSpecToSpec[spec3] ];
+	} else if (color) {
+		starter = urlColorToColor[params.color];
+		deckSpecs = urlColorToSpecs[params.color];
+	}
 
 	return (
 		<div className="deck-page">
-
-		<br />
 
 			<div className="starter">
 				<div style={{ display: 'inline-block', border: '1px solid black', borderRadius: '4px', padding: '8px' }}>
 					{starter} Starter
 				</div>
 
-				<br /><br />
+				<div></div>
+
 
 				{starters[starter].map((name) => {
 					var card = cards[name];
 					return (
 						<div key={card.name} style={{ display: 'inline-block', width: '33%', verticalAlign: 'top' }}>
-							<Link to={"/card/" + toURL(card.name)}>{card.name}</Link> - <small>{card.cost}-Cost {card.type}</small>
+							<small>{card.cost}</small> - <Link to={"/card/" + toURL(card.name)}>{card.name}</Link> - <small>{card.type}</small>
 						</div>
 					);
 				})}
 			</div>
-
-			<br /><br />
 
 			<div className="specs">
 				{deckSpecs.map((spec) => {
@@ -42,17 +49,14 @@ var DeckPage = ({ route, params }) => {
 								<img className="card-image" src={"http://codexcards-assets.surge.sh/images/" + hero.sirlins_filename} />
 							</div>
 
-							<br />
 							<Link to={"/card/" + toURL(hero.name)}>{hero.name}</Link>
-
-							<br /><br />
 
 							<div>
 								{cardNames.map((name) => {
 									var card = cards[name];
 									return (
 										<div key={name}>
-											<Link to={"/card/" + toURL(card.name)}>{card.name}</Link> - <small>{card.cost}-Cost {card.type}</small>
+											<small>{card.cost}</small> -  <Link to={"/card/" + toURL(card.name)}>{card.name}</Link> - <small>{card.type}</small>
 										</div>
 									);
 								})}

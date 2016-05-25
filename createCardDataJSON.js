@@ -57,7 +57,7 @@ const urlKeywords = Object.keys(urlKeywordToKeyword);
 const cardsJSON = [].concat(heroesJSON, neutralJSON, redJSON, greenJSON, blueJSON, blackJSON, whiteJSON, purpleJSON);
 
 let data = cardsJSON.reduce((acc, item) => {
-	const { cards, specs, heroes, colors, starters, urlCardToCard, urlColorToColor, urlColorToSpecs } = acc;
+	const { cards, specs, heroes, colors, starters, urlCardToCard, urlColorToColor, urlColorToSpecs, urlSpecToSpec, urlSpecToColor } = acc;
 
 	//
 	cards[item.name] = item;
@@ -66,16 +66,17 @@ let data = cardsJSON.reduce((acc, item) => {
 	item.rulings = rulings[item.name];
 
 	// search card text for keywords (for general rulings)
-	item.keywords = [];
+	let uniqueKeywords = {};
 	cardTextKeys.forEach((key) => {
 		if (item[key]) {
 			urlKeywords.forEach((keyword) => {
 				if (item[key].toLowerCase().indexOf(keyword) !== -1) {
-					item.keywords.push(urlKeywordToKeyword[keyword]);
+					uniqueKeywords[urlKeywordToKeyword[keyword]] = true;
 				}
 			});
 		}
 	});
+	item.keywords = Object.keys(uniqueKeywords);
 
 	//
 	if (item.spec) {
@@ -106,14 +107,17 @@ let data = cardsJSON.reduce((acc, item) => {
 
 	if (item.color && item.spec) {
 		const urlColor = item.color.toLowerCase();
+		const urlSpec = item.spec.toLowerCase().replace(/\s/g, '_');
 		urlColorToColor[urlColor] = item.color;
+		urlSpecToSpec[urlSpec] = item.spec;
+		urlSpecToColor[urlSpec] = item.color;
 
 		if (!urlColorToSpecs[urlColor]) { urlColorToSpecs[urlColor] = []; }
 		if (!urlColorToSpecs[urlColor].includes(item.spec)) { urlColorToSpecs[urlColor].push(item.spec); }
 	}
 
 	return acc;
-}, { cards: {}, specs: {}, heroes: {}, colors: {}, starters: {}, urlCardToCard: {}, urlColorToColor: {}, urlColorToSpecs: {} });
+}, { cards: {}, specs: {}, heroes: {}, colors: {}, starters: {}, urlCardToCard: {}, urlColorToColor: {}, urlColorToSpecs: {}, urlSpecToSpec: {}, urlSpecToColor: {} });
 
 data.generalRulings = generalRulings;
 

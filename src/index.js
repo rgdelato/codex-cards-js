@@ -11,6 +11,7 @@ import './normalize.css';
 import './global.scss';
 
 import data from './cardData.json';
+window.codex_data = data;
 
 
 
