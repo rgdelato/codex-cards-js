@@ -12,6 +12,8 @@ import './global.scss';
 
 import data from './cardData.json';
 
+
+
 ReactDOM.render(
 	<Router history={browserHistory}>
 		<Route path="/" component={Layout}>

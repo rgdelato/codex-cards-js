@@ -12,7 +12,26 @@ var rulingsJSON = require('./json/rulings.json');
 
 
 
-const rulings = Object.keys(rulingsJSON).reduce((acc, key) => {
+const generalRulings = rulingsJSON['General'].reduce((acc, ruling) => {
+	if (!acc[ruling.card]) { acc[ruling.card] = []; }
+	acc[ruling.card].push(ruling);
+	return acc;
+}, {});
+
+
+
+const urlKeywordToKeyword = Object.keys(generalRulings).reduce((acc, keyword) => {
+	let urlKeyword = keyword.toLowerCase();
+	if (urlKeyword.lastIndexOf(' x') === urlKeyword.length - 2) {
+		urlKeyword = urlKeyword.slice(0, -2);
+	}
+	acc[urlKeyword] = keyword;
+	return acc;
+}, {});
+
+
+
+const rulings = Object.keys(rulingsJSON).filter((key) => { return key !== 'General'; }).reduce((acc, key) => {
 	const rulingsByCard = rulingsJSON[key].reduce((acc, ruling) => {
 		if (!acc[ruling.card]) { acc[ruling.card] = []; }
 		acc[ruling.card].push(ruling);
@@ -23,16 +42,40 @@ const rulings = Object.keys(rulingsJSON).reduce((acc, key) => {
 }, {});
 
 
+
+const cardTextKeys = 	[
+	'rules_text_1', 'rules_text_2', 'rules_text_3',
+	'base_text_1', 'base_text_2', 'base_text_3',
+	'mid_text_1', 'mid_text_2', 'mid_text_3',
+	'max_text_1', 'max_text_2', 'max_text_3'
+];
+
+const urlKeywords = Object.keys(urlKeywordToKeyword);
+
+
+
 const cardsJSON = [].concat(heroesJSON, neutralJSON, redJSON, greenJSON, blueJSON, blackJSON, whiteJSON, purpleJSON);
 
 let data = cardsJSON.reduce((acc, item) => {
 	const { cards, specs, heroes, colors, starters, urlCardToCard, urlColorToColor, urlColorToSpecs } = acc;
 
 	//
+	cards[item.name] = item;
+
+	// add card-specific rulings
 	item.rulings = rulings[item.name];
 
-	//
-	cards[item.name] = item;
+	// search card text for keywords (for general rulings)
+	item.keywords = [];
+	cardTextKeys.forEach((key) => {
+		if (item[key]) {
+			urlKeywords.forEach((keyword) => {
+				if (item[key].toLowerCase().indexOf(keyword) !== -1) {
+					item.keywords.push(urlKeywordToKeyword[keyword]);
+				}
+			});
+		}
+	});
 
 	//
 	if (item.spec) {
@@ -71,6 +114,8 @@ let data = cardsJSON.reduce((acc, item) => {
 
 	return acc;
 }, { cards: {}, specs: {}, heroes: {}, colors: {}, starters: {}, urlCardToCard: {}, urlColorToColor: {}, urlColorToSpecs: {} });
+
+data.generalRulings = generalRulings;
 
 
 

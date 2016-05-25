@@ -4,7 +4,7 @@ import { toURL } from '../utils';
 
 
 var CardPage = ({ route, params }) => {
-	const { cards, urlCardToCard } = route.data;
+	const { cards, urlCardToCard, generalRulings } = route.data;
 	const cardName = urlCardToCard[params.card];
 	const card = cards[cardName];
 
@@ -97,17 +97,38 @@ var CardPage = ({ route, params }) => {
 
 			{(card.rulings && card.rulings[0].ruling) ? (
 				<div className="card-rulings">
-					<h2>Card Rulings</h2>
+					<h2>Card-Specific Rulings</h2>
 					{card.rulings.map((item) => {
 						return ((item.ruling) ?
 							<div className="card-ruling" key={item.ruling}>
-								{item.ruling} <span>&#8212;</span> {item.author}
+								{item.ruling} {(item.author) ? <span>&#8212; {item.author}</span> : null}
 							</div>
 							:
 							null
 						);
 					})}
 				</div>
+			) : (
+				null
+			)}
+
+			{(card.keywords && card.keywords.length) ? (
+					card.keywords.map((keyword) => {
+						return (
+							<div className="card-rulings">
+								<h3>{keyword} Rulings</h3>
+								{generalRulings[keyword].map((item) => {
+									return ((item.ruling) ?
+										<div className="card-ruling" key={item.ruling}>
+											{item.ruling} {(item.author) ? <span>&#8212; {item.author}</span> : null}
+										</div>
+										:
+										null
+									);
+								})}
+							</div>
+						);
+					})
 			) : (
 				null
 			)}
