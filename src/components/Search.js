@@ -7,11 +7,18 @@ class Search extends React.Component {
 		super(props);
 		this.state = { searchText: '' };
 		this.handleChange = this.handleChange.bind(this);
+		this.handleEnterKey = this.handleEnterKey.bind(this);
 	}
 
 	handleChange (e) {
 		const searchText = e.target.value;
 		this.setState({searchText});
+	}
+
+	handleEnterKey (name) {
+		if (name) {
+			window.location = '/card/' + name.toLowerCase().replace(/\s/g, '_');
+		}
 	}
 
 	render () {
@@ -35,6 +42,7 @@ class Search extends React.Component {
 				<input className="search-input" type="text" placeholder="Search for a card by name..."
 					value={this.state.searchText}
 					onChange={this.handleChange}
+					onKeyDown={(e) => (e.key === 'Enter') ? this.handleEnterKey(results[0]) : null}
 				/>
 
 				{(results.length) ? (

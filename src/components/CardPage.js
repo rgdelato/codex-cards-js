@@ -7,6 +7,10 @@ var CardPage = ({ route, params }) => {
 	const cardName = urlCardToCard[params.card];
 	const card = cards[cardName];
 
+	if (!cardName || !card) {
+		window.location.replace('/404');
+	}
+
 	return (
 		<div className="card-page">
 			<div className="card-title">

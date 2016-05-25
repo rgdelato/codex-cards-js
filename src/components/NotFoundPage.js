@@ -3,7 +3,9 @@ import React from 'react';
 
 var NotFoundPage = () => {
 	return (
-		<h1>Page Not Found</h1>
+		<div className="home-page">
+			<h1>Page Not Found</h1>
+		</div>
 	);
 };
 
