@@ -92,10 +92,59 @@ var CardPage = ({ route, params }) => {
 							<span> Hero</span>
 						) : null}
 					</div>
+
+					{((card.rulings && card.rulings[0].ruling) || (card.keywords && card.keywords.length)) ? (
+						<div>
+							<br />
+							<hr size="1" color="#EEEEEE" />
+							<br />
+						</div>
+					) : null}
+
+					{(card.rulings && card.rulings[0].ruling) ? (
+						<div>
+							<strong>Card-Specific Rulings</strong>
+							<blockquote>
+								{card.rulings.map((item) => {
+									return (
+										(item.ruling) ? (
+											<div className="card-ruling" key={item.ruling}>
+												{item.ruling} {(item.author) ? <span>&#8212; {item.author}</span> : null}
+												</div>
+											) : null
+										);
+								})}
+							</blockquote>
+						</div>
+					) : null}
+
+					{(card.keywords && card.keywords.length) ? (
+						card.keywords.map((keyword) => {
+							if (generalRulings[keyword] && generalRulings[keyword].length && generalRulings[keyword][0].ruling) {
+								return (
+									<div key={keyword}>
+										<strong>{keyword} Rulings</strong>
+										<blockquote>
+											{generalRulings[keyword].map((item) => {
+												if (item.ruling) {
+													return (
+														<div className="card-ruling" key={item.ruling}>
+															{item.ruling} {(item.author) ? <span>&#8212;{item.author}</span> : null}
+														</div>
+													);
+												} else { return null; }
+											})}
+										</blockquote>
+									</div>
+								);
+							} else { return null; }
+						})
+					) : null}
+
 				</div>
 			</div>
 
-			{(card.rulings && card.rulings[0].ruling) ? (
+			{/*(card.rulings && card.rulings[0].ruling) ? (
 				<div className="card-rulings">
 					<h2>Card-Specific Rulings</h2>
 					{card.rulings.map((item) => {
@@ -108,9 +157,9 @@ var CardPage = ({ route, params }) => {
 							);
 					})}
 				</div>
-			) : null}
+			) : null*/}
 
-			{(card.keywords && card.keywords.length) ? (
+			{/*(card.keywords && card.keywords.length) ? (
 				card.keywords.map((keyword) => {
 					if (generalRulings[keyword] && generalRulings[keyword].length && generalRulings[keyword][0].ruling) {
 						return (
@@ -129,7 +178,7 @@ var CardPage = ({ route, params }) => {
 						);
 					} else { return null; }
 				})
-			) : null}
+			) : null*/}
 
 			<div style={{ display: 'none', margin: '4em 0' }}>
 				<xmp>{JSON.stringify(card, null, '  ')}</xmp>
