@@ -49,7 +49,8 @@ const cardTextKeys = 	[
 	'rules_text_1', 'rules_text_2', 'rules_text_3',
 	'base_text_1', 'base_text_2', 'base_text_3',
 	'mid_text_1', 'mid_text_2', 'mid_text_3',
-	'max_text_1', 'max_text_2', 'max_text_3'
+	'max_text_1', 'max_text_2', 'max_text_3',
+	'subtype'
 ];
 
 const urlKeywords = Object.keys(urlKeywordToKeyword);
