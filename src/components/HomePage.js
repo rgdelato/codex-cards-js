@@ -35,6 +35,10 @@ var HomePage = (props) => {
 					<span> vs. </span>
 					<span><Link to="/color/purple">Vortoss Conclave</Link></span>
 				</div>
+
+				<div className="banner">
+					<span><Link to="/card/random">Random Card</Link></span>
+				</div>
 			</div>
 
 		</div>

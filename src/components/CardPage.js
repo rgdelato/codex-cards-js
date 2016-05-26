@@ -5,7 +5,15 @@ import { toURL } from '../utils';
 
 var CardPage = ({ route, params }) => {
 	const { cards, urlCardToCard, generalRulings } = route.data;
-	const cardName = urlCardToCard[params.card];
+
+	let cardName;
+	if (params.card !== 'random') {
+		cardName = urlCardToCard[params.card];
+	} else {
+		const cardKeys = Object.keys(cards);
+		cardName = cardKeys[Math.floor(Math.random() * cardKeys.length)];
+	}
+
 	const card = cards[cardName];
 
 	if (!cardName || !card) {
