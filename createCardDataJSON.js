@@ -61,6 +61,9 @@ let data = cardsJSON.reduce((acc, item) => {
 
 	if (!item.sirlins_filename) { return acc; }
 
+	// HACK: Fixing the URL for "Research & Development"
+	item.sirlins_filename = item.sirlins_filename.replace('&', '');
+
 	//
 	cards[item.name] = item;
 
@@ -71,8 +74,9 @@ let data = cardsJSON.reduce((acc, item) => {
 	let uniqueKeywords = {};
 	cardTextKeys.forEach((key) => {
 		if (item[key]) {
+			const cardText = item[key].replace(/\(.*?\)/g, ''); // remove parenthetical text
 			urlKeywords.forEach((keyword) => {
-				if (item[key].toLowerCase().indexOf(keyword) !== -1) {
+				if (cardText.toLowerCase().indexOf(keyword) !== -1) {
 					uniqueKeywords[urlKeywordToKeyword[keyword]] = true;
 				}
 			});
