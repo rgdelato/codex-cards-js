@@ -130,6 +130,10 @@ blockquote {
 	@media (max-width: 990px) {
 		width: 825px;
 	}
+
+	@media (max-width: 825px) {
+		width: 100%;
+	}
 }
 
 .card-image {

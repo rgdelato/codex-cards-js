@@ -4,7 +4,7 @@ import { toURL } from '../utils';
 
 
 var CardPage = ({ route, params }) => {
-	const { cards, urlCardToCard, generalRulings } = route.data;
+	const { cards, urlCardToCard, keywordRulings } = route.data;
 
 	let cardName;
 	if (params.card !== 'random') {
@@ -128,12 +128,12 @@ var CardPage = ({ route, params }) => {
 
 					{(card.keywords && card.keywords.length) ? (
 						card.keywords.map((keyword) => {
-							if (generalRulings[keyword] && generalRulings[keyword].length && generalRulings[keyword][0].ruling) {
+							if (keywordRulings[keyword] && keywordRulings[keyword].length && keywordRulings[keyword][0].ruling) {
 								return (
 									<div key={keyword}>
 										<strong>{keyword} Rulings</strong>
 										<blockquote>
-											{generalRulings[keyword].map((item) => {
+											{keywordRulings[keyword].map((item) => {
 												if (item.ruling) {
 													return (
 														<div className="card-ruling" key={item.ruling}>

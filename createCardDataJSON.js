@@ -12,7 +12,7 @@ var rulingsJSON = require('./json/rulings.json');
 
 
 
-const generalRulings = rulingsJSON['General'].reduce((acc, ruling) => {
+const keywordRulings = rulingsJSON['General'].reduce((acc, ruling) => {
 	if (!acc[ruling.card]) { acc[ruling.card] = []; }
 	acc[ruling.card].push(ruling);
 	return acc;
@@ -20,7 +20,7 @@ const generalRulings = rulingsJSON['General'].reduce((acc, ruling) => {
 
 
 
-const urlKeywordToKeyword = Object.keys(generalRulings).reduce((acc, keyword) => {
+const urlKeywordToKeyword = Object.keys(keywordRulings).reduce((acc, keyword) => {
 	let urlKeyword = keyword.toLowerCase();
 	if (urlKeyword.lastIndexOf(' x') === urlKeyword.length - 2) {
 		urlKeyword = urlKeyword.slice(0, -2);
@@ -31,7 +31,7 @@ const urlKeywordToKeyword = Object.keys(generalRulings).reduce((acc, keyword) =>
 
 
 
-const rulings = Object.keys(rulingsJSON).filter((key) => { return key !== 'General'; }).reduce((acc, key) => {
+const cardSpecificRulings = Object.keys(rulingsJSON).filter((key) => { return key !== 'General'; }).reduce((acc, key) => {
 	const rulingsByCard = rulingsJSON[key].reduce((acc, ruling) => {
 		if (!acc[ruling.card]) { acc[ruling.card] = []; }
 		acc[ruling.card].push(ruling);
@@ -68,7 +68,7 @@ let data = cardsJSON.reduce((acc, item) => {
 	cards[item.name] = item;
 
 	// add card-specific rulings
-	item.rulings = rulings[item.name];
+	item.rulings = cardSpecificRulings[item.name];
 
 	// search card text for keywords (for general rulings)
 	let uniqueKeywords = {};
@@ -125,7 +125,7 @@ let data = cardsJSON.reduce((acc, item) => {
 	return acc;
 }, { cards: {}, specs: {}, heroes: {}, colors: {}, starters: {}, urlCardToCard: {}, urlColorToColor: {}, urlColorToSpecs: {}, urlSpecToSpec: {}, urlSpecToColor: {} });
 
-data.generalRulings = generalRulings;
+data.keywordRulings = keywordRulings;
 
 
 
