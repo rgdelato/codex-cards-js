@@ -28,7 +28,7 @@ var CardPage = ({ route, params }) => {
 
 			<div style={{ textAlign: 'center' }}>
 				<div className="card-image">
-					<img src={"http://codexcards-assets.surge.sh/images/" + card.sirlins_filename} />
+					<img src={"http://codexcards-assets.surge.sh/images/" + card.sirlins_filename.replace('&', '')} />
 				</div>
 
 				<div className="card-info">

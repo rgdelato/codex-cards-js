@@ -104,12 +104,12 @@ let data = cardsJSON.reduce((acc, item) => {
 	}
 
 	//
-	const urlName = item.name.toLowerCase().replace(/\s/g, '_');
+	const urlName = item.name.toLowerCase().replace(/\s/g, '_').replace(/\W/g, '');
 	urlCardToCard[urlName] = item.name;
 
 	if (item.color && item.spec) {
 		const urlColor = item.color.toLowerCase();
-		const urlSpec = item.spec.toLowerCase().replace(/\s/g, '_');
+		const urlSpec = item.spec.toLowerCase().replace(/\s/g, '_').replace(/\W/g, '');
 		urlColorToColor[urlColor] = item.color;
 		urlSpecToSpec[urlSpec] = item.spec;
 		urlSpecToColor[urlSpec] = item.color;

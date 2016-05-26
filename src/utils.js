@@ -1,6 +1,6 @@
 
 const toURL = (str) => {
-	return str.toLowerCase().replace(/\s/g, '_');
+	return str.toLowerCase().replace(/\s/g, '_').replace(/\W/g, '');
 };
 
 export {
