@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory, applyRouterMiddleware } from 'react-router';
+import useScroll from 'react-router-scroll';
 import Layout from './components/Layout';
 import HomePage from './components/HomePage';
 import DeckPage from './components/DeckPage';
@@ -16,7 +17,7 @@ window.codex_data = data;
 
 
 ReactDOM.render(
-	<Router history={browserHistory}>
+	<Router history={browserHistory} render={applyRouterMiddleware(useScroll())}>
 		<Route path="/" component={Layout}>
 			<IndexRoute component={HomePage} data={data} />
 			<Route path="/color/:color" component={DeckPage} data={data} />

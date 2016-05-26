@@ -10,6 +10,8 @@ var whiteJSON   = require('./json/white.json');
 var purpleJSON  = require('./json/purple.json');
 var rulingsJSON = require('./json/rulings.json');
 
+import { toURL } from './src/utils';
+
 
 
 const keywordRulings = rulingsJSON['General'].reduce((acc, ruling) => {
@@ -108,12 +110,12 @@ let data = cardsJSON.reduce((acc, item) => {
 	}
 
 	//
-	const urlName = item.name.toLowerCase().replace(/\s/g, '_').replace(/\W/g, '');
+	const urlName = toURL(item.name);
 	urlCardToCard[urlName] = item.name;
 
 	if (item.color && item.spec) {
-		const urlColor = item.color.toLowerCase();
-		const urlSpec = item.spec.toLowerCase().replace(/\s/g, '_').replace(/\W/g, '');
+		const urlColor = toURL(item.color);
+		const urlSpec = toURL(item.spec);
 		urlColorToColor[urlColor] = item.color;
 		urlSpecToSpec[urlSpec] = item.spec;
 		urlSpecToColor[urlSpec] = item.color;
