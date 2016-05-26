@@ -59,6 +59,8 @@ const cardsJSON = [].concat(heroesJSON, neutralJSON, redJSON, greenJSON, blueJSO
 let data = cardsJSON.reduce((acc, item) => {
 	const { cards, specs, heroes, colors, starters, urlCardToCard, urlColorToColor, urlColorToSpecs, urlSpecToSpec, urlSpecToColor } = acc;
 
+	if (!item.sirlins_filename) { return acc; }
+
 	//
 	cards[item.name] = item;
 

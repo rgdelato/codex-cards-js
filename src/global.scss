@@ -123,9 +123,13 @@ blockquote {
 
 .card-title {
 	box-sizing: border-box;
-	max-width: 825px;
+	max-width: 990px;
 	margin: 0 auto;
 	padding: 0 16px;
+
+	@media (max-width: 990px) {
+		width: 825px;
+	}
 }
 
 .card-image {
@@ -147,10 +151,14 @@ blockquote {
 .card-info {
 	display: inline-block;
 	box-sizing: border-box;
-	width: 495px;
+	width: 660px;
 	padding: 16px;
 	text-align: left;
 	vertical-align: top;
+
+	@media (max-width: 990px) {
+		width: 495px;
+	}
 
 	@media (max-width: 825px) {
 		width: 100%;
