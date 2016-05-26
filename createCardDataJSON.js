@@ -124,6 +124,11 @@ let data = cardsJSON.reduce((acc, item) => {
 		if (!urlColorToSpecs[urlColor].includes(item.spec)) { urlColorToSpecs[urlColor].push(item.spec); }
 	}
 
+	// TODO: come up with something better for searches...
+	item.searchableText = toURL(item.name).replace(/_/g, ' ');
+	if (item.spec) { item.searchableText += ' ' + toURL(item.spec).replace(/_/g, ' '); }
+	item.searchableText += ' ' + item.keywords.map(x => toURL(x).replace(/_/g, ' ')).join(' ');
+
 	return acc;
 }, { cards: {}, specs: {}, heroes: {}, colors: {}, starters: {}, urlCardToCard: {}, urlColorToColor: {}, urlColorToSpecs: {}, urlSpecToSpec: {}, urlSpecToColor: {} });
 

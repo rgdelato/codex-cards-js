@@ -28,10 +28,10 @@ class Search extends React.Component {
 
 		let results = [];
 
-		if (searchText) {
+		if (searchText && searchText.length > 2) {
 			// TODO: un-roll to a loop and kill the filter early if there are too many results
 			results = Object.keys(cards).filter((key) => {
-				if (key.toLowerCase().indexOf(searchText.toLowerCase()) !== -1) {
+				if (cards[key].searchableText.indexOf(searchText.toLowerCase()) !== -1) {
 					return true;
 				}
 				return false;
@@ -48,7 +48,7 @@ class Search extends React.Component {
 
 				{(results.length) ? (
 					<div className="search-results">
-						{results.slice(0, 10).map((name) => (
+						{results.slice(0, 20).map((name) => (
 							<div className="search-result" key={name}>
 								<Link to={"/card/" + toURL(name)}>{name}</Link>
 							</div>
