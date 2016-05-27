@@ -129,12 +129,12 @@ let data = cardsJSON.reduce((acc, item) => {
 	item.searchableText = toURL(item.name).replace(/_/g, ' ');
 	if (item.color)            { item.searchableText += ' ' + toURL(item.color).replace(/_/g, ' '); }
 	if (item.spec)             { item.searchableText += ' ' + toURL(item.spec).replace(/_/g, ' '); }
+	if (item.type)             { item.searchableText += ' ' + toURL(item.type).replace(/_/g, ' '); }
 	if (item.subtype)          { item.searchableText += ' ' + toURL(item.subtype).replace(/_/g, ' '); }
-	if (item.tech_level == 0)  { item.searchableText += ' ' + 'tech 0'; }
-	if (item.tech_level === 1) { item.searchableText += ' ' + 'tech i 1'; }
-	if (item.tech_level === 2) { item.searchableText += ' ' + 'tech ii 2'; }
-	if (item.tech_level === 3) { item.searchableText += ' ' + 'tech iii 3'; }
-	if (item.type === 'Hero')  { item.searchableText += ' ' + 'hero'; }
+	if (item.tech_level == 0)  { item.searchableText += ' tech 0'; }
+	if (item.tech_level === 1) { item.searchableText += ' tech i 1'; }
+	if (item.tech_level === 2) { item.searchableText += ' tech ii 2'; }
+	if (item.tech_level === 3) { item.searchableText += ' tech iii 3'; }
 	if (item.type && item.type.indexOf('Spell') !== -1) { item.searchableText += ' ' + item.type.toLowerCase() + ' magic'; }
 	if (item.tech_level == 0 || item.type === 'Minor Spell')  { item.searchableText += ' starter'; }
 	item.searchableText += ' ' + item.keywords.map(x => toURL(x).replace(/_/g, ' ')).join(' ');
