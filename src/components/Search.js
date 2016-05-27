@@ -29,9 +29,12 @@ class Search extends React.Component {
 		let results = [];
 
 		if (searchText && searchText.length > 2) {
+			const searchTerms = toURL(searchText).split('_');
+			// console.log(searchTerms);
 			// TODO: un-roll to a loop and kill the filter early if there are too many results
 			results = Object.keys(cards).filter((key) => {
-				if (cards[key].searchableText.indexOf(searchText.toLowerCase()) !== -1) {
+
+				if (searchTerms.every((term) => { return (cards[key].searchableText.indexOf(term.toLowerCase()) !== -1); })) {
 					return true;
 				}
 				return false;
