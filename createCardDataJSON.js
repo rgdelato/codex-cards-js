@@ -129,7 +129,7 @@ let data = cardsJSON.reduce((acc, item) => {
 	item.searchableText = toURL(item.name).replace(/_/g, ' ');
 	if (item.color)            { item.searchableText += ' ' + toURL(item.color).replace(/_/g, ' '); }
 	if (item.spec)             { item.searchableText += ' ' + toURL(item.spec).replace(/_/g, ' '); }
-	if (item.tech_level == 0)  { item.searchableText += ' ' + 'tech 0'; }
+	if (item.tech_level == 0)  { item.searchableText += ' ' + 'tech 0 starter'; }
 	if (item.tech_level === 1) { item.searchableText += ' ' + 'tech i 1'; }
 	if (item.tech_level === 2) { item.searchableText += ' ' + 'tech ii 2'; }
 	if (item.tech_level === 3) { item.searchableText += ' ' + 'tech iii 3'; }
