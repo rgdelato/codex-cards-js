@@ -60,7 +60,7 @@ var DeckPage = ({ route, params }) => {
 									var card = cards[name];
 									return (
 										<div className="ellipsis" key={card.name}>
-											<Link to={"/card/" + toURL(card.name)}>{card.name}</Link> - <small>{card.type}</small>
+											<Link to={"/card/" + toURL(card.name)}>{card.name}</Link> - <small>{card.bottom}</small>
 										</div>
 									);
 								})}
@@ -88,7 +88,7 @@ var DeckPage = ({ route, params }) => {
 												var card = cards[name];
 												return (
 													<div className="ellipsis" key={name}>
-														<Link to={"/card/" + toURL(card.name)}>{card.name}</Link> - <small>{card.type}</small>
+														<Link to={"/card/" + toURL(card.name)}>{card.name}</Link> - <small>{card.bottom}</small>
 													</div>
 												);
 											})}

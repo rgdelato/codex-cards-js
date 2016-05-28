@@ -84,20 +84,8 @@ var CardPage = ({ route, params }) => {
 							</span>
 						) : null}
 
-						{(card.tech_level == 0) ? (
-							<span> Tech 0</span>
-						) : (card.tech_level === 1) ? (
-							<span> Tech I</span>
-						) : (card.tech_level === 2) ? (
-							<span> Tech II</span>
-						) : (card.tech_level === 3) ? (
-							<span> Tech III</span>
-						) : (card.type === 'Spell' || card.type === 'Ongoing Spell' || card.type === 'Minor Spell' || card.type === 'Minor Ongoing Spell') ? (
-							<span> Magic</span>
-						) : (card.type === 'Ultimate Spell' || card.type === 'Ultimate Ongoing Spell') ? (
-							<span> Ultimate Magic</span>
-						) : (card.type === 'Hero') ? (
-							<span> Hero</span>
+						{(card.bottom) ? (
+							<span> {card.bottom}</span>
 						) : null}
 					</div>
 

@@ -125,6 +125,22 @@ let data = cardsJSON.reduce((acc, item) => {
 		if (!urlColorToSpecs[urlColor].includes(item.spec)) { urlColorToSpecs[urlColor].push(item.spec); }
 	}
 
+	if (item.tech_level == 0) {
+		item.bottom = 'Tech 0';
+	} else if (item.tech_level === 1) {
+		item.bottom = 'Tech I';
+	} else if (item.tech_level === 2) {
+		item.bottom = 'Tech II';
+	} else if (item.tech_level === 3) {
+		item.bottom = 'Tech III';
+	} else if (item.type === 'Spell' || item.type === 'Ongoing Spell' || item.type === 'Minor Spell' || item.type === 'Minor Ongoing Spell') {
+		item.bottom = 'Magic';
+	} else if (item.type === 'Ultimate Spell' || item.type === 'Ultimate Ongoing Spell') {
+		item.bottom = 'Ultimate Magic';
+	} else if (item.type === 'Hero') {
+		item.bottom = 'Hero';
+	}
+
 	// TODO: come up with something better for searches...
 	item.searchableText = toURL(item.name).replace(/_/g, ' ');
 	if (item.color)            { item.searchableText += ' ' + toURL(item.color).replace(/_/g, ' '); }
