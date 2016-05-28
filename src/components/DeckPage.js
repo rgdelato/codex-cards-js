@@ -6,9 +6,22 @@ import { toURL } from '../utils';
 var DeckPage = ({ route, params }) => {
 	const { cards, specs, heroes, starters, urlColorToColor, urlColorToSpecs, urlSpecToSpec, urlSpecToColor } = route.data;
 
-	const { color, spec1, spec2, spec3 } = params;
+	let { color, spec1, spec2, spec3 } = params;
 	let starter;
 	let deckSpecs;
+
+	if (route.random) {
+		let specKeys = Object.keys(urlSpecToSpec);
+		let index1 = Math.floor(Math.random() * specKeys.length);
+		spec1 = specKeys[index1];
+		specKeys.splice(index1, 1);
+		let index2 = Math.floor(Math.random() * specKeys.length);
+		spec2 = specKeys[index2];
+		specKeys.splice(index2, 1);
+		let index3 = Math.floor(Math.random() * specKeys.length);
+		spec3 = specKeys[index3];
+		specKeys.splice(index3, 1);
+	}
 
 	if (spec1 && spec2 && spec3) {
 		starter = urlSpecToColor[spec1];

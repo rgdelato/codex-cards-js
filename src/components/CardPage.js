@@ -7,11 +7,11 @@ var CardPage = ({ route, params }) => {
 	const { cards, urlCardToCard, keywordRulings } = route.data;
 
 	let cardName;
-	if (params.card !== 'random') {
-		cardName = urlCardToCard[params.card];
-	} else {
+	if (route.random) {
 		const cardKeys = Object.keys(cards);
 		cardName = cardKeys[Math.floor(Math.random() * cardKeys.length)];
+	} else {
+		cardName = urlCardToCard[params.card];
 	}
 
 	const card = cards[cardName];

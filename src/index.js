@@ -21,7 +21,9 @@ ReactDOM.render(
 		<Route path="/" component={Layout}>
 			<IndexRoute component={HomePage} data={data} />
 			<Route path="/color/:color" component={DeckPage} data={data} />
+			<Route path="/deck/random" component={DeckPage} data={data} random={true} />
 			<Route path="/deck/:spec1/:spec2/:spec3" component={DeckPage} data={data} />
+			<Route path="/card/random" component={CardPage} data={data} random={true} />
 			<Route path="/card/:card" component={CardPage} data={data} />
 			<Route path="*" component={NotFoundPage}/>
 		</Route>
