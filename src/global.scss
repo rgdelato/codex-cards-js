@@ -80,6 +80,9 @@ blockquote {
 
 .table-hack {
 	display: table;
+	table-layout: fixed;
+	width: 100%;
+	max-width: 298px;
 }
 
 .table-cell-hack {
@@ -88,7 +91,7 @@ blockquote {
 }
 
 .card-size.table-cell-hack {
-	width: 298px;
+	max-width: 298px;
 	height: 450px;
 }
 
@@ -107,18 +110,66 @@ blockquote {
 }
 
 .worker-image,
-.starter-list {
-	@media (max-width: 660px) {
+.starter-list,
+.spec-list {
 
+	.table-hack { width: 330px; }
+
+	@media (max-width: 330px) {
+		.table-hack { width: 100%; }
+	}
+
+	.card-size {
+		margin: 16px;
+	}
+
+	@media (max-width: 660px) {
 		.card-size {
 			margin: 16px;
-			height: auto;
 		}
 	}
 }
 
-.spec {
+.worker-image .card-size,
+.starter-list .card-size {
+	height: 330px;
+
+	@media (max-width: 660px) {
+		height: auto;
+	}
+}
+
+.spec-list .card-size {
+	height: auto;
+
+	@media (max-width: 990px) {
+		height: 450px;
+	}
+	@media (max-width: 660px) {
+		height: auto;
+	}
+}
+
+.starter-list,
+.spec,
+.spec-list {
+	width: 100%;
 	max-width: 330px;
+}
+
+.spec {
+	@media (max-width: 990px) {
+		width: 100%;
+		max-width: none;
+	}
+}
+
+.spec .card-image-container,
+.spec-list {
+	@media (max-width: 990px) {
+		display: inline-block;
+		vertical-align: top;
+	}
 }
 
 .card-title {

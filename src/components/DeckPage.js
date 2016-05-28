@@ -81,16 +81,20 @@ var DeckPage = ({ route, params }) => {
 							</div>
 
 							<div className="spec-list">
-								<blockquote>
-									{cardNames.map((name) => {
-										var card = cards[name];
-										return (
-											<div className="ellipsis" key={name}>
-												<Link to={"/card/" + toURL(card.name)}>{card.name}</Link> - <small>{card.type}</small>
-											</div>
-										);
-									})}
-								</blockquote>
+								<div className="table-hack">
+									<div className="card-size table-cell-hack">
+										<blockquote>
+											{cardNames.map((name) => {
+												var card = cards[name];
+												return (
+													<div className="ellipsis" key={name}>
+														<Link to={"/card/" + toURL(card.name)}>{card.name}</Link> - <small>{card.type}</small>
+													</div>
+												);
+											})}
+										</blockquote>
+									</div>
+								</div>
 							</div>
 						</div>
 					);
