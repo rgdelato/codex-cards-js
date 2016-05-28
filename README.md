@@ -13,3 +13,9 @@ npm start
 ```
 
 The site runs locally on `http://localhost:8080/`.
+
+## What's Going On Here?
+
+When you `npm start`, the `createCardDataJSON.js` Node script takes all of the JSON files in `./json` and reduces them into a single JSON file at `./src/cardData.json`. (This file also includes several helper mappings, such as `urlCardToCard`.)
+
+Once that's done, Webpack compiles the JS/CSS/HTML in the `src` directory and starts up a dev server hosting a single-page React app.
