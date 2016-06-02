@@ -18,7 +18,7 @@ window.codex_data = data;
 
 ReactDOM.render(
 	<Router history={browserHistory} render={applyRouterMiddleware(useScroll())}>
-		<Route path="/" component={Layout}>
+		<Route path="/" component={Layout} data={data}>
 			<IndexRoute component={HomePage} data={data} />
 			<Route path="/color/:color" component={DeckPage} data={data} />
 			<Route path="/deck/random" component={DeckPage} data={data} random={true} />

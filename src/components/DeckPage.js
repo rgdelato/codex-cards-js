@@ -43,6 +43,10 @@ var DeckPage = ({ route, params }) => {
 	return (
 		<div className="deck-page">
 
+			<div style={{ marginTop: '16px' }}>
+				<small>[ {deckSpecs[0]} {(deckSpecs[1]) ? ('/ ' + deckSpecs[1]) : null} {(deckSpecs[2]) ? ('/ ' + deckSpecs[2]) : null} ]</small>
+			</div>
+
 			<div className="starter">
 				<div className="worker-image">
 					<div className="table-hack">
