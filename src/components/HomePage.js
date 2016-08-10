@@ -8,7 +8,8 @@ var HomePage = (props) => {
 		<div className="home-page">
 
 			<div>
-				<h1>Codex Card Rulings</h1>
+				<h1>Codex Card Database</h1>
+				<p>Card Texts, Rulings, and Randomizers</p>
 			</div>
 
 			<Search data={props.route.data} />

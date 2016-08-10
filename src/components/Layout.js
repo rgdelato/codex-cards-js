@@ -7,7 +7,7 @@ var Layout = (props) => {
 	return (
 		<div>
 			<div className="header">
-				<Link to="/">Codex Cards</Link>
+				<Link to="/">Codex Card Database</Link>
 				{/* <Search data={props.route.data} /> */}
 			</div>
 			<div className="content">
