@@ -55,7 +55,8 @@ blockquote {
 	margin: 4em 0;
 }
 
-.search-input {
+.search-input,
+.react-autosuggest__input {
 	display: block;
 	box-sizing: border-box;
 	width: 100%;
@@ -69,13 +70,21 @@ blockquote {
 	transition: border-color;
 }
 
-.search-results {
+.search-results,
+.react-autosuggest__suggestions-list {
 	position: absolute;
 	width: 100%;
+	margin: 0; padding: 0;
 	border-width: 0 1px 1px 1px;
 	border-style: solid;
 	border-color: #DDD;
 	background-color: white;
+
+	li { list-style-type: none; }
+}
+
+.react-autosuggest__suggestion--focused {
+	background-color: #DDD;
 }
 
 .table-hack {

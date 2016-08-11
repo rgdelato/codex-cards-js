@@ -41,5 +41,8 @@
     "surge": "^0.18.0",
     "webpack": "^1.13.0",
     "webpack-dev-server": "^1.14.1"
+  },
+  "dependencies": {
+    "react-autosuggest": "^5.0.0"
   }
 }

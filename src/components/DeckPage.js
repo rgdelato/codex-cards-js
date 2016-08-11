@@ -32,8 +32,8 @@ var DeckPage = ({ route, params }) => {
 		}
 
 	} else if (color) {
-		starter = urlColorToColor[params.color];
-		deckSpecs = urlColorToSpecs[params.color];
+		starter = urlColorToColor[color];
+		deckSpecs = urlColorToSpecs[color];
 
 		if (!starter || !deckSpecs) {
 			window.location.replace('/404');
@@ -45,7 +45,7 @@ var DeckPage = ({ route, params }) => {
 
 			<div style={{ marginTop: '16px' }}>
 				<small>
-					[ <a href={'/deck/' + spec1 + '/' + spec2 + '/' + spec3}>{deckSpecs[0]} {(deckSpecs[1]) ? ('/ ' + deckSpecs[1]) : null} {(deckSpecs[2]) ? ('/ ' + deckSpecs[2]) : null}</a> ]
+					[ <a href={(color) ? ('/color/' + color) : ('/deck/' + spec1 + '/' + spec2 + '/' + spec3)}>{deckSpecs[0]} {(deckSpecs[1]) ? ('/ ' + deckSpecs[1]) : null} {(deckSpecs[2]) ? ('/ ' + deckSpecs[2]) : null}</a> ]
 				</small>
 			</div>
 

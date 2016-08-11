@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
+import Autosuggest from 'react-autosuggest';
+
 import { toURL } from '../utils';
 
 
@@ -8,18 +10,11 @@ class Search extends React.Component {
 		super(props);
 		this.state = { searchText: '' };
 		this.handleChange = this.handleChange.bind(this);
-		this.handleEnterKey = this.handleEnterKey.bind(this);
 	}
 
 	handleChange (e) {
 		const searchText = e.target.value;
 		this.setState({searchText});
-	}
-
-	handleEnterKey (name) {
-		if (name) {
-			window.location = '/card/' + toURL(name);
-		}
 	}
 
 	render () {
@@ -30,10 +25,8 @@ class Search extends React.Component {
 
 		if (searchText && searchText.length > 2) {
 			const searchTerms = toURL(searchText).split('_');
-			// console.log(searchTerms);
 			// TODO: un-roll to a loop and kill the filter early if there are too many results
 			results = Object.keys(cards).filter((key) => {
-
 				if (searchTerms.every((term) => { return (cards[key].searchableText.indexOf(term.toLowerCase()) !== -1); })) {
 					return true;
 				}
@@ -43,23 +36,15 @@ class Search extends React.Component {
 
 		return (
 			<div className="search-container">
-				<input className="search-input" type="text" placeholder="Search for a card by name..."
-					value={this.state.searchText}
-					onChange={this.handleChange}
-					onKeyDown={(e) => (e.key === 'Enter') ? this.handleEnterKey(results[0]) : null}
+
+				<Autosuggest suggestions={results}
+					getSuggestionValue={x => x}
+					renderSuggestion={name => <div className="search-result" key={name}><Link to={"/card/" + toURL(name)}>{name}</Link></div>}
+					inputProps={{onChange: this.handleChange, value: this.state.searchText, placeholder: 'Search for a card by name...'}}
+					onSuggestionSelected={(e, {suggestion}) => { window.location = '/card/' + toURL(suggestion); }}
+					focusFirstSuggestion={results.length === 1}
 				/>
 
-				{(results.length) ? (
-					<div className="search-results">
-						{results.slice(0, 20).map((name) => (
-							<div className="search-result" key={name}>
-								<Link to={"/card/" + toURL(name)}>{name}</Link>
-							</div>
-						))}
-					</div>
-				) : (
-					null
-				)}
 			</div>
 		);
 	}
