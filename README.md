@@ -1,6 +1,6 @@
 # Codex Card Rulings
 
-A small website to search the card text and rulings for Codex: Card-Time Strategy by Sirlin Games. Currently hosted at `http://codexcards.surge.sh/`.
+A small website to search the card text and rulings for Codex: Card-Time Strategy by Sirlin Games. Currently hosted at `http://codexcarddb.com/`.
 
 ## Getting Started
 
