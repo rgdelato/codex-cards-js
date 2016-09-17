@@ -40,7 +40,11 @@ class Search extends React.Component {
 				<Autosuggest suggestions={results}
 					getSuggestionValue={x => x}
 					renderSuggestion={name => <div className="search-result" key={name}><Link to={"/card/" + toURL(name)}>{name}</Link></div>}
-					inputProps={{onChange: this.handleChange, value: this.state.searchText, placeholder: 'Search for a card by name...'}}
+					inputProps={{
+						onChange: this.handleChange,
+						value: this.state.searchText,
+						placeholder: 'Search for a card...'
+					}}
 					onSuggestionSelected={(e, {suggestion}) => { window.location = '/card/' + toURL(suggestion); }}
 					focusFirstSuggestion={true}
 				/>

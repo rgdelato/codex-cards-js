@@ -52,39 +52,55 @@ blockquote {
 
 .search-container {
 	position: relative;
-	margin: 4em 0;
-}
+	line-height: 1.625;
 
-.search-input,
-.react-autosuggest__input {
-	display: block;
-	box-sizing: border-box;
-	width: 100%;
-	// margin-bottom: 0.75em;
-	border: 1px solid #DDD;
-	border-radius: 3px;
-	padding: 0.5em 0.5em;
-	font-size: 1em;
-	background-color: white;
-	box-shadow: inset 0 1px 3px rgba(0,0,0,0.06);
-	transition: border-color;
-}
+	.content & {
+		margin: 4em 0;
+	}
 
-.search-results,
-.react-autosuggest__suggestions-list {
-	position: absolute;
-	width: 100%;
-	margin: 0; padding: 0;
-	border-width: 0 1px 1px 1px;
-	border-style: solid;
-	border-color: #DDD;
-	background-color: white;
+	.header & {
+		float: right;
+		padding-top: 3px;
 
-	li { list-style-type: none; }
-}
+		@media (max-width: 660px) {
+			display: none;
+		}
+	}
 
-.react-autosuggest__suggestion--focused {
-	background-color: #DDD;
+	.search-input,
+	.react-autosuggest__input {
+		display: block;
+		box-sizing: border-box;
+		width: 100%;
+		border: 1px solid #DDD;
+		border-radius: 3px;
+		padding: 0.5em 0.5em;
+		font-size: 1em;
+
+		background-color: white;
+		box-shadow: inset 0 1px 3px rgba(0,0,0,0.06);
+		transition: border-color;
+	}
+
+	.search-results,
+	.react-autosuggest__suggestions-list {
+		position: absolute;
+		width: 100%;
+		margin: 0; padding: 0;
+		border-width: 0 1px 1px 1px;
+		border-style: solid;
+		border-color: #DDD;
+		background-color: white;
+
+		li {
+			list-style-type: none;
+			padding: 0 0.5em;
+		}
+	}
+
+	.react-autosuggest__suggestion--focused {
+		background-color: #DDD;
+	}
 }
 
 .table-hack {
