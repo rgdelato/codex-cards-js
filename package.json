@@ -43,6 +43,6 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
-    "react-autosuggest": "^5.0.0"
+    "react-autosuggest": "^6.0.0"
   }
 }
