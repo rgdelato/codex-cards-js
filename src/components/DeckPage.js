@@ -51,19 +51,26 @@ var DeckPage = ({ route, params }) => {
 					</small>
 				</div>
 
-				<div className="specs">
-					{deckSpecs.map((spec) => {
-						var cardNames = specs[spec];
-						return cardNames.map((name) => {
-							var card = cards[name];
-							return (
-								<div className="card-image-container" style={{display: 'inline-block'}} key={name}>
-									<Link to={"/card/" + toURL(card.name)}><img className="card-image" src={"http://codexcards-assets.surge.sh/images/" + card.sirlins_filename} /></Link>
-								</div>
-							);
-						});
-					})}
-				</div>
+				{starters[starter].map((name) => {
+					var card = cards[name];
+					return (
+						<div className="card-image-container" style={{display: 'inline-block'}} key={card.name}>
+							<Link to={"/card/" + toURL(card.name)}><img className="card-image" src={"http://codexcards-assets.surge.sh/images/" + card.sirlins_filename} /></Link>
+						</div>
+					);
+				})}
+
+				{deckSpecs.map((spec) => {
+					var cardNames = specs[spec];
+					return cardNames.map((name) => {
+						var card = cards[name];
+						return (
+							<div className="card-image-container" style={{display: 'inline-block'}} key={card.name}>
+								<Link to={"/card/" + toURL(card.name)}><img className="card-image" src={"http://codexcards-assets.surge.sh/images/" + card.sirlins_filename} /></Link>
+							</div>
+						);
+					});
+				})}
 			</div>
 		);
 	}
