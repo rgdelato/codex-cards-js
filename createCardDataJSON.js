@@ -73,19 +73,35 @@ let data = cardsJSON.reduce((acc, item) => {
 	// add card-specific rulings
 	item.rulings = cardSpecificRulings[item.name];
 
-	// search card text for keywords (for general rulings)
+	// search card text for keywords (for general rulings) and token cards
 	let uniqueKeywords = {};
+	let uniqueTokens = {};
 	cardTextKeys.forEach((key) => {
 		if (item[key]) {
 			const cardText = item[key].replace(/\(.*?\)/g, ''); // remove parenthetical text
+
 			urlKeywords.forEach((keyword) => {
 				if (cardText.toLowerCase().indexOf(keyword) !== -1) {
 					uniqueKeywords[urlKeywordToKeyword[keyword]] = true;
 				}
 			});
+
+			// If there's a word before "token" and if the first letter of that word is a capital letter,
+			// then we'll assume it's a token type.
+			// TODO: This regex doesn't work for Lich's Bargain or multi-word token types (e.g. "Mirror Illusion" token)
+			const regex = /(\w+)\stoken/g;
+			let token = regex.exec(cardText);
+			while (token !== null) {
+				if (token[1][0] === token[1][0].toUpperCase()) {
+					// console.log(item.name, JSON.stringify(token[1]));
+					uniqueTokens[token[1]] = true;
+				}
+				token = regex.exec(cardText);
+			}
 		}
 	});
 	item.keywords = Object.keys(uniqueKeywords);
+	item.tokens = Object.keys(uniqueTokens);
 
 	//
 	if (item.spec) {
@@ -154,6 +170,7 @@ let data = cardsJSON.reduce((acc, item) => {
 	if (item.type && item.type.indexOf('Spell') !== -1) { item.searchableText += ' ' + item.type.toLowerCase() + ' magic'; }
 	if (item.tech_level == 0 || item.type === 'Minor Spell')  { item.searchableText += ' starter'; }
 	item.searchableText += ' ' + item.keywords.map(x => toURL(x).replace(/_/g, ' ')).join(' ');
+	if (item.tokens.length)    { item.searchableText += ' ' + item.tokens.map(x => toURL(x).replace(/_/g, ' ')).join(' ') + ' token'; }
 
 	return acc;
 }, { cards: {}, specs: {}, heroes: {}, colors: {}, starters: {}, urlCardToCard: {}, urlColorToColor: {}, urlColorToSpecs: {}, urlSpecToSpec: {}, urlSpecToColor: {} });

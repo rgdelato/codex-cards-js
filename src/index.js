@@ -15,14 +15,21 @@ import data from './cardData.json';
 window.codex_data = data;
 
 
+if (window.location.toString().indexOf('//codexcards.surge.sh') !== -1) {
+	window.location.replace(window.location.toString().replace('//codexcards.surge.sh', '//codexcarddb.com'));
+}
+
 
 ReactDOM.render(
 	<Router history={browserHistory} render={applyRouterMiddleware(useScroll())}>
 		<Route path="/" component={Layout} data={data}>
 			<IndexRoute component={HomePage} data={data} />
 			<Route path="/color/:color" component={DeckPage} data={data} />
+			<Route path="/color/:color/images" component={DeckPage} data={data} images={true} />
 			<Route path="/deck/random" component={DeckPage} data={data} random={true} />
+			<Route path="/deck/random/images" component={DeckPage} data={data} random={true} images={true} />
 			<Route path="/deck/:spec1/:spec2/:spec3" component={DeckPage} data={data} />
+			<Route path="/deck/:spec1/:spec2/:spec3/images" component={DeckPage} data={data} images={true} />
 			<Route path="/card/random" component={CardPage} data={data} random={true} />
 			<Route path="/card/:card" component={CardPage} data={data} />
 			<Route path="*" component={NotFoundPage}/>

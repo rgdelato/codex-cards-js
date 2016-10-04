@@ -40,6 +40,34 @@ var DeckPage = ({ route, params }) => {
 		}
 	}
 
+	// TEMP: quick-fix to have a "show all images" view
+	if (route.images) {
+		return (
+			<div className="deck-page">
+
+				<div style={{ marginTop: '16px' }}>
+					<small>
+						[ <a href={(color) ? ('/color/' + color) : ('/deck/' + spec1 + '/' + spec2 + '/' + spec3)}>{deckSpecs[0]} {(deckSpecs[1]) ? ('/ ' + deckSpecs[1]) : null} {(deckSpecs[2]) ? ('/ ' + deckSpecs[2]) : null}</a> ]
+					</small>
+				</div>
+
+				<div className="specs">
+					{deckSpecs.map((spec) => {
+						var cardNames = specs[spec];
+						return cardNames.map((name) => {
+							var card = cards[name];
+							return (
+								<div className="card-image-container" style={{display: 'inline-block'}} key={name}>
+									<Link to={"/card/" + toURL(card.name)}><img className="card-image" src={"http://codexcards-assets.surge.sh/images/" + card.sirlins_filename} /></Link>
+								</div>
+							);
+						});
+					})}
+				</div>
+			</div>
+		);
+	}
+
 	return (
 		<div className="deck-page">
 
