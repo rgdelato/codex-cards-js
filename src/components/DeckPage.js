@@ -71,6 +71,7 @@ var DeckPage = ({ route, params }) => {
 						);
 					});
 				})}
+
 			</div>
 		);
 	}

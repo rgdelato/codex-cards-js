@@ -38,11 +38,23 @@
             "author": "sharpo"
         },
         {
+            "card": "Anti-air",
+            "ruling": "Anti-air does not stack. Having two instances of anti-air is the same as having just one.",
+            "date": "2016-09-16T07:00:00.000Z",
+            "author": "sharpo"
+        },
+        {
             "card": "Boost X",
             "abilityText": "You may pay an additional X when you play this to get the boost effect.",
-            "ruling": "If something has you \"put a unit into play,\" that's different from \"playing it\" so you can't pay for or use a boost effect in that case. Likewise, if a unit with a boost enters play through any means other than playing it from your hand (such as being returned from Second Chances or Geiger or Pasternaak's max level abilities) then you can't use its boost.",
+            "ruling": "If something has you \"put a unit into play,\" that's different from \"playing it\" so you can't pay for or use a boost effect in that case. Likewise, if a unit with a boost enters play through any means other than playing it (such as being returned from Second Chances or Geiger or Pasternaak's max level abilities) then you can't use its boost.",
             "date": "2016-03-11T08:00:00.000Z",
             "author": "Sirlin"
+        },
+        {
+            "card": "Boost X",
+            "ruling": "Using Graveyard, Jurisdiction, and Vir Garbarean you can \"play\" a card from a zone other than your hand. You can still use boost when playing a card this way.",
+            "date": "2016-09-17T07:00:00.000Z",
+            "author": "sharpo"
         },
         {
             "card": "Boost X",
@@ -63,6 +75,12 @@
             "ruling": "Anything that checks for \"dying from combat damage\" such as Brave Knight or Gilded Glaxx does \"die from combat damage\" if deathtouch hits it.",
             "date": "2016-03-11T08:00:00.000Z",
             "author": "Sirlin"
+        },
+        {
+            "card": "Deathtouch",
+            "ruling": "Deathtouch does not stack. Having two instances of deathtouch is the same as having just one.",
+            "date": "2016-09-16T07:00:00.000Z",
+            "author": "sharpo"
         },
         {
             "card": "Detector",
@@ -260,8 +278,8 @@
         },
         {
             "card": "Overpower",
-            "ruling": "When determining what an overpower attacker \"could have attacked\" you still obey all the normal rules of attacking. If there are any patrollers other than the one actually attacked that would have been possible for the overpower attacker to attack, the excess combat damage has to go to one of them rather than say, a tech building. If there aren't any other patrollers the overpower unit or hero could have attacked, then the excess damage can go to anything with HP that's controlled by the same player (or team in 2v2) as the patroller actually attacked.",
-            "date": "2016-03-14T07:00:00.000Z",
+            "ruling": "When determining what an overpower attacker \"could have attacked\" you still obey all the normal rules of attacking. If there are any patrollers other than the one actually attacked that would have been possible for the overpower attacker to attack, the excess combat damage has to go to one of them rather than say, a tech building. If there aren't any other patrollers that the overpower unit or hero could have attacked, then the excess damage can go to anything with HP that's controlled by the player (or team in 2v2) whose patroller was attacked.",
+            "date": "2016-09-13T07:00:00.000Z",
             "author": "Sirlin"
         },
         {
@@ -275,6 +293,12 @@
             "ruling": "Overpower damage still counts as combat damage (it can kill Gilded Glaxx for example) and it counts as an ability (so something that has overpower cannot get +2/+2 from Midori's middle ability).",
             "date": "2016-03-19T07:00:00.000Z",
             "author": "Sirlin"
+        },
+        {
+            "card": "Overpower",
+            "ruling": "Overpower does not stack. Having two instances of overpower is the same as having just one.",
+            "date": "2016-09-16T07:00:00.000Z",
+            "author": "sharpo"
         },
         {
             "card": "Readiness",
@@ -336,7 +360,14 @@
         {
             "card": "Sparkshot",
             "ruling": "Sparkshot doesn't [target].",
-            "date": "2016-03-27T07:00:00.000Z"
+            "date": "2016-03-27T07:00:00.000Z",
+            "author": "sharpo"
+        },
+        {
+            "card": "Sparkshot",
+            "ruling": "Sparkshot does stack. A unit with 2 instances of sparkshot will get to deal 2 damage to an adjacent patroller or 1 damage to each of 2 adjacent patrollers.",
+            "date": "2016-09-16T07:00:00.000Z",
+            "author": "sharpo"
         },
         {
             "card": "Stealth",
@@ -417,6 +448,7 @@
         },
         {
             "card": "Tower",
+            "abilityText": "Detects stealth/invisible once per turn. Deals 1 damage to each attacker (that it can see).",
             "ruling": "The damage dealt by the tower is considered combat damage (so if it kills a Brave Knight that counts as \"dying from combat damage\"). It also means that the damage is dealt simultaneously with other combat damage.",
             "date": "2016-03-14T07:00:00.000Z",
             "author": "Sirlin"
@@ -462,6 +494,32 @@
             "ruling": "In free-for-all, the tower will only hit an attacker that is attacking things you control. It won't hit an attacker that is attacking things controlled by one of your opponents.",
             "date": "2016-03-14T07:00:00.000Z",
             "author": "Sirlin"
+        },
+        {
+            "card": "Tech Lab",
+            "abilityText": "Unlock an additional spec.",
+            "ruling": "If you choose one spec for your Tech Lab, you can build another Tech Lab later and choose a different spec.",
+            "date": "2016-06-16T07:00:00.000Z",
+            "author": "sharpo"
+        },
+        {
+            "card": "Tech Lab",
+            "ruling": "If you have a Tech Lab but have not built a Tech 2 building, you do not choose a spec for your Tech Lab. Later when you build your Tech 2 building, you will choose the spec for the Tech 2 building and for the Tech Lab.",
+            "date": "2016-06-16T07:00:00.000Z",
+            "author": "sharpo"
+        },
+        {
+            "card": "Heroes' Hall",
+            "abilityText": "You may have an additional hero in play.",
+            "ruling": "Heroes' Hall only does anything when you want to play a hero. You can determine how many heroes you can play like so:\n- If you have an active Tech 3 building, or you have an active Tech 2 building and an active Heroes' Hall, you can play all 3 heroes.\n- If you have an active Tech 2 building or an active Heroes' Hall, you can play 2 heroes.\n- Otherwise, you can play only 1 hero.",
+            "date": "2016-06-16T07:00:00.000Z",
+            "author": "sharpo"
+        },
+        {
+            "card": "Heroes' Hall",
+            "ruling": "Losing Heroes' Hall won't cause any of your heroes to leave play.",
+            "date": "2016-06-16T07:00:00.000Z",
+            "author": "sharpo"
         }
     ],
     "Neutral": [
@@ -535,7 +593,7 @@
         },
         {
             "card": "Final Smash",
-            "ruling": "You choose targets as you resolve each part of the spell, not all at once before you do anything. That means if there's an opposing flagbearer in play that CAN be targeted by the first part of the spell (destroy a tech 0 unit) then you must target it. Then after that, if there is an opposing flagbearer that CAN be targeted by the second part of the spell (return a tech I unit to its owner's hand) AND you didn't already target it earlier in resolving this same cast of Final Smash, then you MUST target it. Then you resolve the last part of the spell (gain control of a tech II unit) and again, if there is an opposing flagbearer that you can choose AND you haven't chosen it already, then you must choose it. ",
+            "ruling": "You choose targets as you resolve each part of the spell, not all at once before you do anything. That means if there's an opposing flagbearer in play that CAN be targeted by the first part of the spell (destroy a tech 0 unit) then you must target it. Then after that, if there is an opposing flagbearer that CAN be targeted by the second part of the spell (return a tech I unit to its owner's hand) AND you didn't already target it earlier in resolving this same cast of Final Smash, then you MUST target it. Then you resolve the last part of the spell (gain control of a tech II unit) and again, if there is an opposing flagbearer that you can choose AND you haven't chosen one already, then you must choose it. ",
             "date": "2016-03-19T07:00:00.000Z",
             "author": "Sirlin"
         },
@@ -2442,7 +2500,7 @@
         },
         {
             "card": "Chronofixer",
-            "ruling": "This prevents opposing heroes from gaining levels by by means. That includes killing another player's hero, and effects like Training Grounds.",
+            "ruling": "This prevents opposing heroes from gaining levels by any means. That includes killing another player's hero, and effects like Training Grounds.",
             "date": "2016-03-19T07:00:00.000Z",
             "author": "Sirlin"
         },
@@ -2532,8 +2590,8 @@
         },
         {
             "card": "Assimilate",
-            "ruling": "If an enemy unit has Spirit of the Panda attached and you Assimilate Spirit of the Panda, you now control it. It remains attached to the enemy unit and that unit still gets +2/+2. But now whenever it attacks, YOU get 1 gold and during YOUR upkeep, YOU get the Healing 1 effect.",
-            "date": "2016-03-11T08:00:00.000Z",
+            "ruling": "If an enemy unit has Spirit of the Panda attached and you Assimilate Spirit of the Panda, you now control it. It remains attached to the enemy unit and that unit still gets +2/+2 and gives its controller 1 gold when it attacks. But now during YOUR upkeep, YOU get the Healing 1 effect.",
+            "date": "2016-09-22T07:00:00.000Z",
             "author": "Sirlin"
         },
         {
@@ -2541,6 +2599,12 @@
             "ruling": "If you use this to steal an ongoing channeling spell such as Two Step, but you don't control the appropriate hero to channel that spell, it's immediately discarded.",
             "date": "2016-03-11T08:00:00.000Z",
             "author": "Sirlin"
+        },
+        {
+            "card": "Assimilate",
+            "ruling": "If you use this to steal your opponent's Graveyard, you will be able to play units owned by your opponent from the Graveyard. You can always play tech 0 units from the Graveyard. If you have a tech I building, you can play any tech I units from the Graveyard. To play a tech II unit owned by your opponent from the Graveyard, you must have a tech II building with a matching spec. This is only possible if you are playing some of the same specs as your opponent. You cannot name a spec other than your three specs when building your tech II building or tech lab.",
+            "date": "2016-09-22T07:00:00.000Z",
+            "author": "sharpo"
         },
         {
             "card": "Double Time",
@@ -2825,8 +2889,8 @@
         },
         {
             "card": "Prynn Pasternaak",
-            "ruling": "If she has exactly two time runes, she CAN use her max level ability to trash a unit. If she does, she then immediately dies from fading, then the trashed unit returns to play.",
-            "date": "2016-03-02T08:00:00.000Z",
+            "ruling": "If she has exactly two time runes, she CAN use her max level ability to trash a unit. If she does, she then immediately dies because of hanving no fading runes, then the trashed unit returns to play. This does not count as \"dies from fading\" on her middle ability, because that only triggers if fading itself removed the last time rune.",
+            "date": "2016-09-07T07:00:00.000Z",
             "author": "Sirlin"
         },
         {
