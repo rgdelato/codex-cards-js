@@ -9,6 +9,7 @@ var blackJSON   = require('./json/black.json');
 var whiteJSON   = require('./json/white.json');
 var purpleJSON  = require('./json/purple.json');
 var rulingsJSON = require('./json/rulings.json');
+var mapsJSON = require('./json/maps.json');
 
 import { toURL } from './src/utils';
 
@@ -176,7 +177,7 @@ let data = cardsJSON.reduce((acc, item) => {
 }, { cards: {}, specs: {}, heroes: {}, colors: {}, starters: {}, urlCardToCard: {}, urlColorToColor: {}, urlColorToSpecs: {}, urlSpecToSpec: {}, urlSpecToColor: {} });
 
 data.keywordRulings = keywordRulings;
-
+data.maps = mapsJSON;
 
 
 fs.writeFileSync('src/cardData.json', JSON.stringify(data, null, '  '));
