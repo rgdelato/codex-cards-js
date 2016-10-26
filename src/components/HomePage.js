@@ -43,6 +43,12 @@ var HomePage = (props) => {
 					<span> | </span>
 					<span><Link to="/deck/random">Random Deck</Link></span>
 				</div>
+
+				<div className="banner">
+					<span><Link to="/maps">Map Cards List</Link></span>
+					<span> | </span>
+					<span><Link to="/map/random">Random Map Card</Link></span>
+				</div>
 			</div>
 
 		</div>

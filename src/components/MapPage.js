@@ -4,47 +4,40 @@ import { Link } from 'react-router';
 import Search from './Search';
 
 
-var MapPage = (props) => {
+var MapPage = ({ route, params }) => {
+    const { maps } = route.data;
+
+    let mapCard 
+    if(params.map === "random") {
+        const mapIndex = Math.floor(Math.random() * maps.length);
+        mapCard = maps[mapIndex];
+    } else {
+        mapCard = maps.find(function(mapCard) {
+            return mapCard.urlName === params.map
+        });
+    }
+    
+    if(!mapCard) {
+        window.location.replace('/404');
+    }
+
 	return (
-		<div className="home-page">
+		<div className="map-page">
 
 			<div>
 				<h1>Codex Card Database</h1>
-				<p>Card Texts, Rulings, and Randomizers</p>
-                <p>Now with Maps!</p>
+				<p>Card Texts, Rulings, and Randomizers</p>                
 			</div>
 
-			<Search data={props.route.data} />
-
-			<div className="banners">
-				<div className="banner starter-banner">
-					<Link to="/color/neutral">Bashing vs. Finesse</Link>
+			<div className="map-card">
+                <div className="map-image">
+					<img src={"http://codexcards-assets.surge.sh/images/map_" + mapCard.urlName + ".jpg"} />
 				</div>
-
-				<div className="banner core-banner">
-					<span><Link to="/color/red">Blood Anarchs</Link></span>
-					<span> vs. </span>
-					<span><Link to="/color/green">Moss Sentinels</Link></span>
-				</div>
-
-				<div className="banner core-banner">
-					<span><Link to="/color/blue">Flagstone Dominion</Link></span>
-					<span> vs. </span>
-					<span><Link to="/color/black">Blackhand Scourge</Link></span>
-				</div>
-
-				<div className="banner core-banner">
-					<span><Link to="/color/white">Whitestar Order</Link></span>
-					<span> vs. </span>
-					<span><Link to="/color/purple">Vortoss Conclave</Link></span>
-				</div>
-
-				<div className="banner">
-					<span><Link to="/card/random">Random Card</Link></span>
-					<span> | </span>
-					<span><Link to="/deck/random">Random Deck</Link></span>
-				</div>
-			</div>
+                <div className="map-info">
+                    <h2> {mapCard.name} </h2>
+                    <p> {mapCard.description} </p>
+                </div>
+            </div>
 
 		</div>
 	);
