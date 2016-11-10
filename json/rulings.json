@@ -301,6 +301,12 @@
             "author": "sharpo"
         },
         {
+            "card": "Overpower",
+            "ruling": "Overpower excess damage doesn't count as an extra instance of combat damage (for effect like Might of Leaf and Claw).",
+            "date": "2016-11-10T11:17:00.000Z",
+            "author": "sharpo"
+        },
+        {
             "card": "Readiness",
             "abilityText": "Doesn't exhaust to attack, but can only attack once per turn.",
             "ruling": "Readiness doesn't let you ignore any other attacking rules. You still can't attack with something that's exhausted, and you still can't attack with it the turn it comes under your control (unless it also has haste.)",
@@ -367,6 +373,12 @@
             "card": "Sparkshot",
             "ruling": "Sparkshot does stack. A unit with 2 instances of sparkshot will get to deal 2 damage to an adjacent patroller or 1 damage to each of 2 adjacent patrollers.",
             "date": "2016-09-16T07:00:00.000Z",
+            "author": "sharpo"
+        },
+        {
+            "card": "Sparkshot",
+            "ruling": "Sparkshot damage doesn't count as an extra instance of combat damage (for effect like Might of Leaf and Claw).",
+            "date": "2016-11-10T11:17:00.000Z",
             "author": "sharpo"
         },
         {
