@@ -71,7 +71,6 @@ class HomePage extends React.Component {
 					<div style={{ fontSize: '0.875em' }}>
 						{[1,2,3].map((index) => (
 							<select key={'select_' + index} value={this.state[`spec${index}`]} onChange={(e) => this.setState({ [`spec${index}`]: e.target.value })}>
-								<option key="disabled">Choose a spec...</option>
 								{Object.keys(route.data.urlSpecToSpec).map((key) => (
 									<option key={key} value={key}>{route.data.urlSpecToSpec[key]}</option>
 								))}
