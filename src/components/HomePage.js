@@ -71,9 +71,10 @@ class HomePage extends React.Component {
 					<div style={{ fontSize: '0.875em' }}>
 						{[1,2,3].map((index) => (
 							<select key={'select_' + index} value={this.state[`spec${index}`]} onChange={(e) => this.setState({ [`spec${index}`]: e.target.value })}>
-								{Object.keys(route.data.urlSpecToSpec).map((key) => (
-									<option key={key} value={key}>{route.data.urlSpecToSpec[key]}</option>
-								))}
+								{Object.keys(route.data.urlSpecToSpec).map((key) => {
+									const selectedInOtherDropdown = [1,2,3].filter((item) => item !== index).some((item) => this.state[`spec${item}`] === key);
+									return (!selectedInOtherDropdown) && (<option key={key} value={key}>{route.data.urlSpecToSpec[key]}</option>);
+								})}
 							</select>
 						))}
 					</div>
