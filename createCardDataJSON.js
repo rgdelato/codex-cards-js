@@ -177,10 +177,6 @@ let data = cardsJSON.reduce((acc, item) => {
 }, { cards: {}, specs: {}, heroes: {}, colors: {}, starters: {}, urlCardToCard: {}, urlColorToColor: {}, urlColorToSpecs: {}, urlSpecToSpec: {}, urlSpecToColor: {} });
 
 data.keywordRulings = keywordRulings;
-data.maps = mapsJSON.map(function(mapCard) {
-	mapCard.urlName = mapCard.name.toLowerCase().replace(/ /g, '_');
-	return mapCard;
-});
-
+data.maps = mapsJSON;
 
 fs.writeFileSync('src/cardData.json', JSON.stringify(data, null, '  '));

@@ -5,8 +5,19 @@ import Search from './Search';
 
 
 class HomePage extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			spec1: 'discipline',
+			spec2: 'ninjutsu',
+			spec3: 'strength'
+		};
+	}
+
 	render () {
 		const { route } = this.props;
+		const { spec1, spec2, spec3 } = this.state;
 
 		return (
 			<div className="home-page">
@@ -42,28 +53,35 @@ class HomePage extends React.Component {
 					</div>
 
 					<div className="banner">
+						<span><Link to="/maps">Map Cards</Link></span>
+					</div>
+
+					<div className="banner">
 						<span><Link to="/card/random">Random Card</Link></span>
 						<span> | </span>
 						<span><Link to="/deck/random">Random Deck</Link></span>
+						<span> | </span>
+						<span><Link to="/map/random">Random Map</Link></span>
 					</div>
 				</div>
 
-				<div className="banner">
-					<span><Link to="/maps">Map Cards List</Link></span>
-					<span> | </span>
-					<span><Link to="/map/random">Random Map Card</Link></span>
-				</div>
+				<br />
 
-				<div>
-					{[0,1,2].map((index) => (
-						<select key={'select_' + index}>
-							<option key="disabled">Choose a spec...</option>
-							{Object.keys(route.data.urlSpecToSpec).map((key) => (
-								<option key={key} value={key}>{route.data.urlSpecToSpec[key]}</option>
-							))}
-						</select>
-					))}
-					<Link to={`/deck/${spec1}/${spec2}/${spec3}`}></Link>
+				<div style={{ textAlign: 'center' }}>
+					<div style={{ fontSize: '0.875em' }}>
+						{[1,2,3].map((index) => (
+							<select key={'select_' + index} value={this.state[`spec${index}`]} onChange={(e) => this.setState({ [`spec${index}`]: e.target.value })}>
+								<option key="disabled">Choose a spec...</option>
+								{Object.keys(route.data.urlSpecToSpec).map((key) => (
+									<option key={key} value={key}>{route.data.urlSpecToSpec[key]}</option>
+								))}
+							</select>
+						))}
+					</div>
+
+					<div>
+						<Link to={`/deck/${spec1}/${spec2}/${spec3}`}>Build Deck</Link>
+					</div>
 				</div>
 			</div>
 		);
