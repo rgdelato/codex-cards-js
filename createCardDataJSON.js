@@ -15,7 +15,7 @@ import { toURL } from './src/utils';
 
 
 
-const keywordRulings = rulingsJSON['General'].reduce((acc, ruling) => {
+const generalRulings = rulingsJSON['General'].reduce((acc, ruling) => {
 	if (!acc[ruling.card]) { acc[ruling.card] = []; }
 	acc[ruling.card].push(ruling);
 	return acc;
@@ -23,7 +23,15 @@ const keywordRulings = rulingsJSON['General'].reduce((acc, ruling) => {
 
 
 
-const urlKeywordToKeyword = Object.keys(keywordRulings).reduce((acc, keyword) => {
+const urlRulingToRuling = Object.keys(generalRulings).reduce((acc, ruling) => {
+	let urlRuling = toURL(ruling);
+	acc[urlRuling] = ruling;
+	return acc;
+}, {});
+
+
+
+const urlKeywordToKeyword = Object.keys(generalRulings).reduce((acc, keyword) => {
 	let urlKeyword = keyword.toLowerCase();
 	if (urlKeyword.lastIndexOf(' x') === urlKeyword.length - 2) {
 		urlKeyword = urlKeyword.slice(0, -2);
@@ -176,7 +184,8 @@ let data = cardsJSON.reduce((acc, item) => {
 	return acc;
 }, { cards: {}, specs: {}, heroes: {}, colors: {}, starters: {}, urlCardToCard: {}, urlColorToColor: {}, urlColorToSpecs: {}, urlSpecToSpec: {}, urlSpecToColor: {} });
 
-data.keywordRulings = keywordRulings;
+data.generalRulings = generalRulings;
+data.urlRulingToRuling = urlRulingToRuling;
 data.maps = mapsJSON;
 
 fs.writeFileSync('src/cardData.json', JSON.stringify(data, null, '  '));

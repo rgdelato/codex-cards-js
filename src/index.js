@@ -4,9 +4,11 @@ import { Router, Route, IndexRoute, browserHistory, applyRouterMiddleware } from
 import useScroll from 'react-router-scroll';
 import Layout from './components/Layout';
 import HomePage from './components/HomePage';
+import GeneralPage from './components/GeneralPage';
+import RulingPage from './components/RulingPage';
 import DeckPage from './components/DeckPage';
 import CardPage from './components/CardPage';
-import MapListPage from './components/MapListPage';
+import MapsPage from './components/MapsPage';
 import MapPage from './components/MapPage';
 import NotFoundPage from './components/NotFoundPage';
 
@@ -25,6 +27,8 @@ ReactDOM.render(
 	<Router history={browserHistory} render={applyRouterMiddleware(useScroll())}>
 		<Route path="/" component={Layout} data={data}>
 			<IndexRoute component={HomePage} data={data} />
+			<Route path="/general" component={GeneralPage} data={data} />
+			<Route path="/ruling/:ruling" component={RulingPage} data={data} />
 			<Route path="/color/:color" component={DeckPage} data={data} />
 			<Route path="/color/:color/images" component={DeckPage} data={data} images={true} />
 			<Route path="/deck/random" component={DeckPage} data={data} random={true} />
@@ -33,7 +37,7 @@ ReactDOM.render(
 			<Route path="/deck/:spec1/:spec2/:spec3/images" component={DeckPage} data={data} images={true} />
 			<Route path="/card/random" component={CardPage} data={data} random={true} />
 			<Route path="/card/:card" component={CardPage} data={data} />
-			<Route path="/maps" component={MapListPage} data={data} />
+			<Route path="/maps" component={MapsPage} data={data} />
 			<Route path="/map/:map" component={MapPage} data={data} />
 			<Route path="*" component={NotFoundPage}/>
 		</Route>

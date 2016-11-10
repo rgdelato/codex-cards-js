@@ -30,6 +30,10 @@ class HomePage extends React.Component {
 				<Search data={route.data} />
 
 				<div className="banners">
+					<div className="banner">
+						<Link to="/general">General Rulings</Link>
+					</div>
+
 					<div className="banner starter-banner">
 						<Link to="/color/neutral">Bashing vs. Finesse</Link>
 					</div>
