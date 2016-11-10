@@ -267,3 +267,17 @@ blockquote {
 .card-ruling {
 	margin-bottom: 1em;
 }
+
+.map-list-page {
+	text-align: center;
+}
+
+.map-page {
+	text-align: center;
+}
+
+.map-card {
+	.map-image {
+		transform: rotate(90deg);
+	}
+}

@@ -6,6 +6,8 @@ import Layout from './components/Layout';
 import HomePage from './components/HomePage';
 import DeckPage from './components/DeckPage';
 import CardPage from './components/CardPage';
+import MapListPage from './components/MapListPage';
+import MapPage from './components/MapPage';
 import NotFoundPage from './components/NotFoundPage';
 
 import './normalize.css';
@@ -31,6 +33,8 @@ ReactDOM.render(
 			<Route path="/deck/:spec1/:spec2/:spec3/images" component={DeckPage} data={data} images={true} />
 			<Route path="/card/random" component={CardPage} data={data} random={true} />
 			<Route path="/card/:card" component={CardPage} data={data} />
+			<Route path="/maps" component={MapListPage} data={data} />
+			<Route path="/map/:map" component={MapPage} data={data} />
 			<Route path="*" component={NotFoundPage}/>
 		</Route>
 	</Router>,

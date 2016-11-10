@@ -48,6 +48,12 @@ class HomePage extends React.Component {
 					</div>
 				</div>
 
+				<div className="banner">
+					<span><Link to="/maps">Map Cards List</Link></span>
+					<span> | </span>
+					<span><Link to="/map/random">Random Map Card</Link></span>
+				</div>
+
 				<div>
 					{[0,1,2].map((index) => (
 						<select key={'select_' + index}>
@@ -59,7 +65,6 @@ class HomePage extends React.Component {
 					))}
 					<Link to={`/deck/${spec1}/${spec2}/${spec3}`}></Link>
 				</div>
-
 			</div>
 		);
 	}
