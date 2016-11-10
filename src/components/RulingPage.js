@@ -5,7 +5,8 @@ var RulingPage = ({ route, params }) => {
 	const { generalRulings, urlRulingToRuling } = route.data;
 	const urlRuling = params.ruling;
 	const rulingName = urlRulingToRuling[urlRuling];
-	const abilityText = generalRulings[rulingName].find((ruling) => ruling.abilityText).abilityText;
+	const abilityTextRuling = generalRulings[rulingName].find((ruling) => ruling.abilityText);
+	const abilityText = abilityTextRuling && abilityTextRuling.abilityText;
 
 	return (
 		<div className="card-page">
@@ -15,15 +16,20 @@ var RulingPage = ({ route, params }) => {
 
 			<div style={{ textAlign: 'center' }}>
 				<div className="card-info">
-					<div>
-						{ abilityText }
-					</div>
 
-					<div>
-						<br />
-						<hr size="1" color="#EEEEEE" />
-						<br />
-					</div>
+					{(abilityText) ? (
+						<div>
+							<div>
+								{ abilityText }
+							</div>
+
+							<div>
+								<br />
+								<hr size="1" color="#EEEEEE" />
+								<br />
+							</div>
+						</div>
+					) : null}
 
 					{(generalRulings[rulingName].length) ? (
 						<div>
