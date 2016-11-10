@@ -264,6 +264,12 @@ blockquote {
 	}
 }
 
+.card-rulings-columns {
+	-moz-column-width: 136px;
+	-webkit-column-width: 136px;
+	column-width: 136px;
+}
+
 .card-ruling {
 	margin-bottom: 1em;
 }

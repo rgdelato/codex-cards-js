@@ -12,7 +12,7 @@ const GeneralPage = (props) => {
 				<h1>General Rulings</h1>
 			</div>
 
-			<div className="card-rulings" style={{ textAlign: 'center', columnWidth: '136px' }}>
+			<div className="card-rulings card-rulings-columns" style={{ textAlign: 'center' }}>
 				{Object.keys(generalRulings).map((key) => (
 					<div className="ellipsis" key={key}>
 						<Link to={"/ruling/" + toURL(key)}>{key}</Link>
