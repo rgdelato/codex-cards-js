@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { toURL } from '../utils';
 
 
 var MapPage = ({ route, params }) => {
@@ -11,7 +12,7 @@ var MapPage = ({ route, params }) => {
 				card = maps[mapIndex];
 		} else {
 				card = maps.find(function(mapCard) {
-						return mapCard.urlName === params.map
+						return toURL(mapCard.name) === params.map;
 				});
 		}
 
