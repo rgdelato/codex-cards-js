@@ -2590,7 +2590,7 @@
         },
         {
             "card": "Assimilate",
-            "ruling": "If an enemy unit has Spirit of the Panda attached and you Assimilate Spirit of the Panda, you now control it. It remains attached to the enemy unit and that unit still gets +2/+2 and gives its controller 1 gold when it attacks. But now during YOUR upkeep, YOU get the Healing 1 effect.",
+            "ruling": "If an enemy unit has Spirit of the Panda attached and you Assimilate Spirit of the Panda, you now control it. It remains attached to the enemy unit and that unit still gets +2/+2 and gives its ctonroller 1 gold when it attacks. But now during YOUR upkeep, YOU get the Healing 1 effect.",
             "date": "2016-09-22T07:00:00.000Z",
             "author": "Sirlin"
         },
