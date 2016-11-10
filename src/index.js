@@ -12,7 +12,6 @@ import './normalize.css';
 import './global.scss';
 
 import data from './cardData.json';
-window.codex_data = data;
 
 
 if (window.location.toString().indexOf('//codexcards.surge.sh') !== -1) {
