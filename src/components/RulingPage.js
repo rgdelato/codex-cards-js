@@ -19,13 +19,11 @@ var RulingPage = ({ route, params }) => {
 						{ abilityText }
 					</div>
 
-					{(generalRulings[rulingName].length > 1) ? (
-						<div>
-							<br />
-							<hr size="1" color="#EEEEEE" />
-							<br />
-						</div>
-					): null}
+					<div>
+						<br />
+						<hr size="1" color="#EEEEEE" />
+						<br />
+					</div>
 
 					{(generalRulings[rulingName].length) ? (
 						<div>
