@@ -5,7 +5,7 @@ var RulingPage = ({ route, params }) => {
 	const { generalRulings, urlRulingToRuling } = route.data;
 	const urlRuling = params.ruling;
 	const rulingName = urlRulingToRuling[urlRuling];
-	const abilityTextRuling = generalRulings[rulingName].find((ruling) => ruling.abilityText);
+	const abilityTextRuling = generalRulings[rulingName].filter((ruling) => ruling.abilityText)[0];
 	const abilityText = abilityTextRuling && abilityTextRuling.abilityText;
 
 	return (
