@@ -2,9 +2,11 @@ import React from 'react';
 import { Link } from 'react-router';
 import { toURL } from '../utils';
 
+import data from '../cardData.json';
+
 
 var CardPage = ({ route, params }) => {
-	const { cards, urlCardToCard, generalRulings } = route.data;
+	const { cards, urlCardToCard, generalRulings } = data;
 
 	let cardName;
 	if (route.random) {
@@ -28,7 +30,7 @@ var CardPage = ({ route, params }) => {
 
 			<div style={{ textAlign: 'center' }}>
 				<div className="card-image">
-					<img src={"http://codexcards-assets.surge.sh/images/" + card.sirlins_filename} />
+					<img src={"http://codexcards-assets.surge.sh/images/" + card.sirlins_filename} alt={card.name} />
 				</div>
 
 				<div className="card-info">
@@ -138,10 +140,6 @@ var CardPage = ({ route, params }) => {
 					) : null}
 
 				</div>
-			</div>
-
-			<div style={{ display: 'none', margin: '4em 0' }}>
-				<xmp>{JSON.stringify(card, null, '  ')}</xmp>
 			</div>
 
 		</div>

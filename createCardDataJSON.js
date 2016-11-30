@@ -9,10 +9,9 @@ var blackJSON   = require('./json/black.json');
 var whiteJSON   = require('./json/white.json');
 var purpleJSON  = require('./json/purple.json');
 var rulingsJSON = require('./json/rulings.json');
-var mapsJSON = require('./json/maps.json');
+var mapsJSON    = require('./json/maps.json');
 
-import { toURL } from './src/utils';
-
+var toURL = require('./src/utils').toURL;
 
 
 const generalRulings = rulingsJSON['General'].reduce((acc, ruling) => {
@@ -49,7 +48,7 @@ const cardSpecificRulings = Object.keys(rulingsJSON).filter((key) => { return ke
 		return acc;
 	}, {});
 
-	return {...acc, ...rulingsByCard};
+	return Object.assign({}, acc, rulingsByCard);
 }, {});
 
 

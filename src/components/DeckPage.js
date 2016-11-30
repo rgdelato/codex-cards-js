@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router';
+
+import data from '../cardData.json';
 import { toURL } from '../utils';
 
 
 var DeckPage = ({ route, params }) => {
-	const { cards, specs, heroes, starters, urlColorToColor, urlColorToSpecs, urlSpecToSpec, urlSpecToColor } = route.data;
+	const { cards, specs, heroes, starters, urlColorToColor, urlColorToSpecs, urlSpecToSpec, urlSpecToColor } = data;
 
 	let { color, spec1, spec2, spec3 } = params;
 	let starter;
@@ -55,7 +57,7 @@ var DeckPage = ({ route, params }) => {
 					var card = cards[name];
 					return (
 						<div className="card-image-container" style={{display: 'inline-block'}} key={card.name}>
-							<Link to={"/card/" + toURL(card.name)}><img className="card-image" src={"http://codexcards-assets.surge.sh/images/" + card.sirlins_filename} /></Link>
+							<Link to={"/card/" + toURL(card.name)}><img className="card-image" src={"http://codexcards-assets.surge.sh/images/" + card.sirlins_filename} alt={card.name} /></Link>
 						</div>
 					);
 				})}
@@ -66,7 +68,7 @@ var DeckPage = ({ route, params }) => {
 						var card = cards[name];
 						return (
 							<div className="card-image-container" style={{display: 'inline-block'}} key={card.name}>
-								<Link to={"/card/" + toURL(card.name)}><img className="card-image" src={"http://codexcards-assets.surge.sh/images/" + card.sirlins_filename} /></Link>
+								<Link to={"/card/" + toURL(card.name)}><img className="card-image" src={"http://codexcards-assets.surge.sh/images/" + card.sirlins_filename} alt={card.name} /></Link>
 							</div>
 						);
 					});
@@ -125,7 +127,7 @@ var DeckPage = ({ route, params }) => {
 					return (
 						<div className="spec" key={spec}>
 							<div className="card-image-container">
-								<Link to={"/card/" + toURL(hero.name)}><img className="card-image" src={"http://codexcards-assets.surge.sh/images/" + hero.sirlins_filename} /></Link>
+								<Link to={"/card/" + toURL(hero.name)}><img className="card-image" src={"http://codexcards-assets.surge.sh/images/" + hero.sirlins_filename} alt={hero.name} /></Link>
 							</div>
 
 							<div className="spec-list">

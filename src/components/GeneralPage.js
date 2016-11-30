@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router';
+
+import data from '../cardData.json';
 import { toURL } from '../utils';
 
 
 const GeneralPage = (props) => {
-	const generalRulings = props.route.data.generalRulings;
+	const generalRulings = data.generalRulings;
 
 	return (
 		<div className="card-page">

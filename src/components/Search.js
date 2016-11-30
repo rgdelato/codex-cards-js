@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import Autosuggest from 'react-autosuggest';
 
+import data from '../cardData.json';
 import { toURL } from '../utils';
 
 
@@ -18,7 +19,7 @@ class Search extends React.Component {
 	}
 
 	render () {
-		const { cards } = this.props.data;
+		const { cards } = data;
 		const { searchText } = this.state;
 
 		let results = [];

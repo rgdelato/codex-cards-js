@@ -1,8 +1,10 @@
 import React from 'react';
 
+import data from '../cardData.json';
+
 
 var RulingPage = ({ route, params }) => {
-	const { generalRulings, urlRulingToRuling } = route.data;
+	const { generalRulings, urlRulingToRuling } = data;
 	const urlRuling = params.ruling;
 	const rulingName = urlRulingToRuling[urlRuling];
 	const abilityTextRuling = generalRulings[rulingName].filter((ruling) => ruling.abilityText)[0];
@@ -33,6 +35,8 @@ var RulingPage = ({ route, params }) => {
 
 					{(generalRulings[rulingName].length) ? (
 						<div>
+							<strong>Rulings</strong>
+
 							<blockquote>
 								{generalRulings[rulingName].map((item) => {
 									return (

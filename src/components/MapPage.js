@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router';
+
+import data from '../cardData.json';
 import { toURL } from '../utils';
 
 
 var MapPage = ({ route, params }) => {
-		const { maps } = route.data;
+		const { maps } = data;
 
 		let card;
 		if (params.map === "random") {
@@ -28,7 +30,7 @@ var MapPage = ({ route, params }) => {
 
 			<div style={{ textAlign: 'center' }}>
 				<div className="card-image">
-					<img src={"http://codexcards-assets.surge.sh/images/" + card.filename} />
+					<img src={"http://codexcards-assets.surge.sh/images/" + card.filename} alt={card.name} />
 				</div>
 
 				<div className="card-info">

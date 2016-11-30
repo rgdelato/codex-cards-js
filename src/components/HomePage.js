@@ -3,6 +3,8 @@ import { Link } from 'react-router';
 
 import Search from './Search';
 
+import data from '../cardData.json';
+
 
 class HomePage extends React.Component {
 	constructor(props) {
@@ -16,7 +18,6 @@ class HomePage extends React.Component {
 	}
 
 	render () {
-		const { route } = this.props;
 		const { spec1, spec2, spec3 } = this.state;
 
 		return (
@@ -27,7 +28,7 @@ class HomePage extends React.Component {
 					<p>Card Texts, Rulings, and Randomizers</p>
 				</div>
 
-				<Search data={route.data} />
+				<Search />
 
 				<div className="banners">
 					<div className="banner">
@@ -75,9 +76,9 @@ class HomePage extends React.Component {
 					<div style={{ fontSize: '0.875em' }}>
 						{[1,2,3].map((index) => (
 							<select key={'select_' + index} value={this.state[`spec${index}`]} onChange={(e) => this.setState({ [`spec${index}`]: e.target.value })}>
-								{Object.keys(route.data.urlSpecToSpec).map((key) => {
+								{Object.keys(data.urlSpecToSpec).map((key) => {
 									const selectedInOtherDropdown = [1,2,3].filter((item) => item !== index).some((item) => this.state[`spec${item}`] === key);
-									return (!selectedInOtherDropdown) && (<option key={key} value={key}>{route.data.urlSpecToSpec[key]}</option>);
+									return (!selectedInOtherDropdown) && (<option key={key} value={key}>{data.urlSpecToSpec[key]}</option>);
 								})}
 							</select>
 						))}
