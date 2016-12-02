@@ -228,6 +228,12 @@
             "author": "Sirlin"
         },
         {
+            "card": "Indestructible",
+            "ruling": "Some effects like Obliterate, Sacrifice the Weak, and Death Rites ask a player to destroy or sacrifice the unit that is the least according to some ordering. These effects skip units with Indestructible and units that cannot leave play.",
+            "date": "2016-11-24T08:00:00.000Z",
+            "author": "sharpo"
+        },
+        {
             "card": "Invisible",
             "abilityText": "To opponents without a detector, this is untargetable, unattackable, and can sneak past patrollers. While patrolling, this is attackable.",
             "ruling": "\"Sneaking past\" means you can ignore patrollers when attacking and attack anything you want. You can also attack the patrollers if you prefer.",
@@ -262,6 +268,12 @@
             "ruling": "Obliterate never targets. Having resist or being untargetable doesn't help against obliterate.",
             "date": "2016-03-14T07:00:00.000Z",
             "author": "Sirlin"
+        },
+        {
+            "card": "Obliterate X",
+            "ruling": "If there are any units that are indestructible or that can't leave play, ignore them when looking for the weakest unit. If such a thing would be their \"weakest unit\" then instead destroy their next weakest.",
+            "date": "2016-11-24T08:00:00.000Z",
+            "author": "sharpo"
         },
         {
             "card": "Overpower",
@@ -519,6 +531,30 @@
             "card": "Heroes' Hall",
             "ruling": "Losing Heroes' Hall won't cause any of your heroes to leave play.",
             "date": "2016-06-16T07:00:00.000Z",
+            "author": "sharpo"
+        },
+        {
+            "card": "Limit: X",
+            "ruling": "Limit: X is a rule that applies to some kinds of tokens. It means \"If summoning the number of tokens indicated by an ability would cause you to have X or more of that kind of token in play, instead only summon enough tokens to bring your number of copies of that token up to X.\"",
+            "date": "2016-11-24T08:00:00.000Z",
+            "author": "sharpo"
+        },
+        {
+            "card": "Limit: X",
+            "ruling": "You might still end up having more than X of a token in play, for example if you steal them from your opponent.",
+            "date": "2016-11-24T08:00:00.000Z",
+            "author": "sharpo"
+        },
+        {
+            "card": "Limit: X",
+            "ruling": "When a card specifies that Limit: X applies to one way of creating tokens, that limit applies to all ways of creating that kind of token in the whole game.",
+            "date": "2016-11-24T08:00:00.000Z",
+            "author": "sharpo"
+        },
+        {
+            "card": "Limit: X",
+            "ruling": "Limit: X on some kind of token applies to things that are that token before considering copy effects or Polymorph: Squirrel. So Quince's Mirror Illusion tokens will apply against his limit of 2 Mirror Illusions even if they are copying something else.",
+            "date": "2016-11-24T08:00:00.000Z",
             "author": "sharpo"
         }
     ],
@@ -1367,7 +1403,10 @@
             "card": "Blooming Ancient"
         },
         {
-            "card": "Blooming Elm"
+            "card": "Blooming Elm",
+            "ruling": "You can target a unit or a hero which already have +1/+1 rune(s). It just won't add more runes.",
+            "date": "2016-12-02T08:00:00.000Z",
+            "author": "sharpo"
         },
         {
             "card": "Might of Leaf and Claw",
@@ -1380,6 +1419,12 @@
             "ruling": "If you deal combat damage to something's armor, that does count as \"dealing combat damage.\"",
             "date": "2016-03-04T08:00:00.000Z",
             "author": "Sirlin"
+        },
+        {
+            "card": "Might of Leaf and Claw",
+            "ruling": "Abilities like sparkshot and overpower deal damage at the same time as a thing's normal combat damage. All this damage is considered a single instance of \"dealing damage,\" so the extra damage doesn't add a second rune.",
+            "date": "2016-11-07T08:00:00.000Z",
+            "author": "sharpo"
         },
         {
             "card": "Guargum, Eternal Sentinel",
@@ -1465,6 +1510,12 @@
             "ruling": "When you disable an opponent's tech building, they cannot build the next higher tech building until the disable ends. For example, if you disable their tech II building, they cannot build a tech III building on their next turn. If they already had a tech III building though, disabling their tech II building doesn't affect their tech III building—the tech III building continues operating normally.",
             "date": "2016-03-07T08:00:00.000Z",
             "author": "Sirlin"
+        },
+        {
+            "card": "Injunction",
+            "ruling": "If an opponent does not have a tech II building, you won't be able to use Injunction to disable their tech II units.",
+            "date": "2016-11-24T08:00:00.000Z",
+            "author": "sharpo"
         },
         {
             "card": "Community Service",
@@ -1659,6 +1710,12 @@
             "author": "Sirlin"
         },
         {
+            "card": "Free Speech",
+            "ruling": "A silenced opponent can still play spells using Cinderblast Dragon or Guargum, Eternal Sentinel",
+            "date": "2016-11-24T08:00:00.000Z",
+            "author": "sharpo"
+        },
+        {
             "card": "Hallucination"
         },
         {
@@ -1805,7 +1862,10 @@
             "author": "Sirlin"
         },
         {
-            "card": "Gargoyle"
+            "card": "Gargoyle",
+            "ruling": "Gargoyle's activated ability that lets it attack and patrol and abilities that stop Gargoyle specifically from attacking or patrolling are applied in the order of their creation to find out if the Gargoyle can attack or patrol. So if your Gargoyle has Entangling Vines attached, you can activate the ability and attack with it. On the other hand, if you use Entangling Vines and then Kidnapping on your opponent's patrolling Gargoyle, the \"Can't attack or patrol\" from Entangling Vines is newer than the \"Can attack and patrol\" from Gargoyle's activated ability, so you cannot attack with it unless you activate the ability yourself.",
+            "date": "2016-11-24T08:00:00.000Z",
+            "author": "sharpo"
         },
         {
             "card": "Twilight Baron",
@@ -1908,9 +1968,9 @@
         },
         {
             "card": "Hooded Executioner",
-            "ruling": "If there are any units that are indestructible or that can't be sacrificed, ignore them when looking for the weakest unit. If such a thing would be their \"weakest unit\" then instead sacrifice their next weakest.",
-            "date": "2016-03-02T08:00:00.000Z",
-            "author": "Sirlin"
+            "ruling": "If there are any units that are indestructible or that can't leave play, ignore them when looking for the weakest unit. If such a thing would be their \"weakest unit\" then instead destroy their next weakest.",
+            "date": "2016-11-24T08:00:00.000Z",
+            "author": "sharpo"
         },
         {
             "card": "Bone Collector"
@@ -1982,10 +2042,16 @@
             "author": "Sirlin"
         },
         {
-            "card": "Death Rites"
+            "card": "Death Rites",
+            "ruling": "If there are any units that are indestructible or that can't leave play, ignore them when looking for the weakest unit. If such a thing would be their \"lowest tech unit\" then instead destroy their next weakest.",
+            "date": "2016-11-24T08:00:00.000Z",
+            "author": "sharpo"
         },
         {
-            "card": "Crypt Crawler"
+            "card": "Crypt Crawler",
+            "ruling": "\"Flier\" means anything with flying, even a building or hero.",
+            "date": "2016-11-24T08:00:00.000Z",
+            "author": "sharpo"
         },
         {
             "card": "Plague Spitter",
@@ -2107,7 +2173,10 @@
             "card": "Reversal"
         },
         {
-            "card": "True Power of Storms"
+            "card": "True Power of Storms",
+            "ruling": "If you do not reveal and discard 2 cards that cost 3, it won't target anything.",
+            "date": "2016-12-02T08:00:00.000Z",
+            "author": "sharpo"
         },
         {
             "card": "Rambasa Twin",
@@ -2131,13 +2200,13 @@
             "card": "Focus Master",
             "ruling": "1 deathtouch damage is exactly lethal damage. Any other amount of deathtouch damage is not.",
             "date": "2016-03-09T08:00:00.000Z",
-            "author": "Sharpobject"
+            "author": "sharpo"
         },
         {
             "card": "Focus Master",
             "ruling": "If a patroller would take excess damage, but that damage is redirected by Overpower or Stampede, Focus Master cannot prevent any damage for that patroller.",
             "date": "2016-03-09T08:00:00.000Z",
-            "author": "Sharpobject"
+            "author": "sharpo"
         },
         {
             "card": "Vigor Adept"
@@ -2233,7 +2302,16 @@
             "author": "Sirlin"
         },
         {
-            "card": "Earthquake"
+            "card": "Thunderclap",
+            "ruling": "This can target units that aren't patrolling. Sidelining those won't do anything, but if they are illusions they will die from being targeted.",
+            "date": "2016-11-24T08:00:00.000Z",
+            "author": "sharpo"
+        },
+        {
+            "card": "Earthquake",
+            "ruling": "If opponent has a damaged tech building and the 4 damage is enough to destroy it but his base is undamaged, the base will take 2 damage from the destruction of the tech building but none from the spell. This is due to that you never read twice the same sentence. So you deal 4 damage to the damaged buildings, which upon destruction cause the base to take 2 damage , but then you are at the \"Deal 1 damage to all their undamaged buildings.\" line and the base is no more an undamaged building.",
+            "date": "2015-11-27T08:00:00.000Z",
+            "author": "Sirlin"
         },
         {
             "card": "Mythmaking"
@@ -2574,6 +2652,12 @@
             "author": "Sirlin"
         },
         {
+            "card": "Promise of Payment",
+            "ruling": "Promise of Payment does not help you pay for Boost. If you play Promise of Payment and then Murkwood Allies, you only get one kind of token unless you pay 4 gold.",
+            "date": "2016-11-24T08:00:00.000Z",
+            "author": "sharpo"
+        },
+        {
             "card": "Unphase"
         },
         {
@@ -2632,6 +2716,12 @@
             "ruling": "If Glaxx has 0 or less HP, and he has 1 point of armor, then he takes 1 combat damage, he doesn't die, unless it was 1 point of damage from something with deathtouch, then he does die. Damage that merely removes armor doesn't quality as \"dying to combat damage\" but deathtouch specifically says that deathtouch-type combat damage DOES kill things merely by hitting their armor.",
             "date": "2016-03-11T08:00:00.000Z",
             "author": "Sirlin"
+        },
+        {
+            "card": "Gilded Glaxx",
+            "ruling": "Some effects like Obliterate, Sacrifice the Weak, and Death Rites ask a player to destroy or sacrifice the unit that is the least according to some ordering. These effects skip units with Indestructible and units that cannot leave play.",
+            "date": "2016-11-24T08:00:00.000Z",
+            "author": "sharpo"
         },
         {
             "card": "Omegacron",
@@ -2735,6 +2825,12 @@
             "author": "Sirlin"
         },
         {
+            "card": "Drakk Ramhorn",
+            "ruling": "Drakk's max level ability grants Haste to units permanently.",
+            "date": "2016-11-24T08:00:00.000Z",
+            "author": "sharpo"
+        },
+        {
             "card": "Jaina Stormborne"
         },
         {
@@ -2825,6 +2921,12 @@
             "card": "Sirus Quince",
             "ruling": "Quince's max level ability can try to trash the Mirror Illusion two times, once when Quince leaves and once when the unit copied by the Mirror Illusion leaves.",
             "date": "2016-03-14T07:00:00.000Z",
+            "author": "sharpo"
+        },
+        {
+            "card": "Sirus Quince",
+            "ruling": "If your Mirror Illusion copies a Tech 1 unit, it becomes Tech 1.",
+            "date": "2016-11-23T08:00:00.000Z",
             "author": "sharpo"
         },
         {
