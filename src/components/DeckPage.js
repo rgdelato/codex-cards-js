@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import Card from './Card';
 
 import data from '../cardData.json';
 import { toURL } from '../utils';
@@ -56,9 +57,7 @@ var DeckPage = ({ params, random, images }) => {
 				{starters[starter].map((name) => {
 					var card = cards[name];
 					return (
-						<div className="card-image-container" style={{display: 'inline-block'}} key={card.name}>
-							<Link to={"/card/" + toURL(card.name)}><img className="card-image" src={"http://codexcards-assets.surge.sh/images/" + card.sirlins_filename} alt={card.name} /></Link>
-						</div>
+						<Card name={card.name} />
 					);
 				})}
 
@@ -67,9 +66,7 @@ var DeckPage = ({ params, random, images }) => {
 					return cardNames.map((name) => {
 						var card = cards[name];
 						return (
-							<div className="card-image-container" style={{display: 'inline-block'}} key={card.name}>
-								<Link to={"/card/" + toURL(card.name)}><img className="card-image" src={"http://codexcards-assets.surge.sh/images/" + card.sirlins_filename} alt={card.name} /></Link>
-							</div>
+							<Card name={card.name} />
 						);
 					});
 				})}
@@ -126,9 +123,7 @@ var DeckPage = ({ params, random, images }) => {
 					var cardNames = specs[spec];
 					return (
 						<div className="spec" key={spec}>
-							<div className="card-image-container">
-								<Link to={"/card/" + toURL(hero.name)}><img className="card-image" src={"http://codexcards-assets.surge.sh/images/" + hero.sirlins_filename} alt={hero.name} /></Link>
-							</div>
+							<Card name={hero.name} />
 
 							<div className="spec-list">
 								<div className="table-hack">

@@ -196,7 +196,6 @@ blockquote {
 }
 
 @media (max-width: 990px) {
-	.spec .card-image-container,
 	.spec-list {
 		display: inline-block;
 		vertical-align: top;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import Card from './Card';
 import { toURL } from '../utils';
 
 import data from '../cardData.json';
@@ -29,9 +30,7 @@ var CardPage = ({ params, random }) => {
 			</div>
 
 			<div style={{ textAlign: 'center' }}>
-				<div className="card-image">
-					<img src={"http://codexcards-assets.surge.sh/images/" + card.sirlins_filename} alt={card.name} />
-				</div>
+				<Card name={cardName} />
 
 				<div className="card-info">
 					<div>
