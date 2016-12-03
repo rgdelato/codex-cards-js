@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-import data from '../cardData.json';
+import { cards } from '../cardData.json';
 import { toURL } from '../utils';
 
 
 const Card = ({ name }) => {
-	const card = data.cards[name];
+	const card = cards[name];
 
 	if (card) {
 		return (

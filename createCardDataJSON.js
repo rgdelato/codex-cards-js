@@ -183,8 +183,15 @@ let data = cardsJSON.reduce((acc, item) => {
 	return acc;
 }, { cards: {}, specs: {}, heroes: {}, colors: {}, starters: {}, urlCardToCard: {}, urlColorToColor: {}, urlColorToSpecs: {}, urlSpecToSpec: {}, urlSpecToColor: {} });
 
-data.generalRulings = generalRulings;
-data.urlRulingToRuling = urlRulingToRuling;
 data.maps = mapsJSON;
 
 fs.writeFileSync('src/cardData.json', JSON.stringify(data, null, '  '));
+
+
+
+const rulings = {
+	rulings: generalRulings,
+	urlRulingToRuling
+};
+
+fs.writeFileSync('src/rulingData.json' , JSON.stringify(rulings, null, '  '));

@@ -1,18 +1,16 @@
 import React from 'react';
 
-import data from '../cardData.json';
+import { rulings, urlRulingToRuling } from '../rulingData.json';
 
 
 var RulingPage = ({ params }) => {
-	const { generalRulings, urlRulingToRuling } = data;
-	const urlRuling = params.ruling;
-	const rulingName = urlRulingToRuling[urlRuling];
+	const rulingName = urlRulingToRuling[params.ruling];
 
 	if (!rulingName) {
 		window.location.replace('/404');
 	}
 
-	const abilityTextRuling = generalRulings[rulingName].filter((ruling) => ruling.abilityText)[0];
+	const abilityTextRuling = rulings[rulingName].filter((ruling) => ruling.abilityText)[0];
 	const abilityText = abilityTextRuling && abilityTextRuling.abilityText;
 
 	return (
@@ -38,12 +36,12 @@ var RulingPage = ({ params }) => {
 						</div>
 					) : null}
 
-					{(generalRulings[rulingName].length) ? (
+					{(rulings[rulingName].length) ? (
 						<div>
 							<strong>Rulings</strong>
 
 							<blockquote>
-								{generalRulings[rulingName].map((item) => {
+								{rulings[rulingName].map((item) => {
 									return (
 										(item.ruling) ? (
 											<div className="card-ruling" key={item.ruling}>

@@ -3,12 +3,11 @@ import { Link } from 'react-router';
 import Card from './Card';
 import { toURL } from '../utils';
 
-import data from '../cardData.json';
+import { cards, urlCardToCard } from '../cardData.json';
+import { rulings as generalRulings } from '../rulingData.json';
 
 
 var CardPage = ({ params, random }) => {
-	const { cards, urlCardToCard, generalRulings } = data;
-
 	let cardName;
 	if (params.card === 'random') {
 		const cardKeys = Object.keys(cards);

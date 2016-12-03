@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Match, Miss } from 'react-router';
 import Layout from './components/Layout';
 import HomePage from './components/HomePage';
-import GeneralPage from './components/GeneralPage';
+import GeneralRulingsPage from './components/GeneralRulingsPage';
 import RulingPage from './components/RulingPage';
 import DeckPage from './components/DeckPage';
 import CardPage from './components/CardPage';
@@ -24,7 +24,7 @@ ReactDOM.render(
 	<BrowserRouter>
 		<Layout>
 			<Match exactly pattern="/" render={(props) => <HomePage {...props} /> } />
-			<Match exactly pattern="/general" render={(props) => <GeneralPage {...props} />} />
+			<Match exactly pattern="/general" render={(props) => <GeneralRulingsPage {...props} />} />
 			<Match exactly pattern="/ruling/:ruling" render={(props) => <RulingPage {...props} />} />
 
 			<Match exactly pattern="/color/:color" render={(props) => <DeckPage {...props} />} />

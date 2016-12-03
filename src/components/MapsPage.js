@@ -1,13 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-import data from '../cardData.json';
+import { maps } from '../cardData.json';
 import { toURL } from '../utils';
 
 
 var MapListPage = () => {
-    const { maps } = data;
-
 	return (
 		<div className="deck-page" style={{ marginTop: '16px' }}>
 			{maps.map((card) => {

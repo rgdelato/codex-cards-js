@@ -1,13 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-import data from '../cardData.json';
+import { rulings } from '../rulingData.json';
 import { toURL } from '../utils';
 
 
 const GeneralPage = (props) => {
-	const generalRulings = data.generalRulings;
-
 	return (
 		<div className="card-page">
 			<div className="card-title">
@@ -15,7 +13,7 @@ const GeneralPage = (props) => {
 			</div>
 
 			<div className="card-rulings card-rulings-columns" style={{ textAlign: 'center' }}>
-				{Object.keys(generalRulings).map((key) => (
+				{Object.keys(rulings).map((key) => (
 					<div className="ellipsis" key={key}>
 						<Link to={"/ruling/" + toURL(key)}>{key}</Link>
 					</div>

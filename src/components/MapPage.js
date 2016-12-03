@@ -1,13 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-import data from '../cardData.json';
+import { maps } from '../cardData.json';
 import { toURL } from '../utils';
 
 
 var MapPage = ({ params }) => {
-	const { maps } = data;
-
 	let card;
 	if (params.map === "random") {
 		const mapIndex = Math.floor(Math.random() * maps.length);

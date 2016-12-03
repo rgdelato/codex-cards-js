@@ -2,13 +2,11 @@ import React from 'react';
 import { Link } from 'react-router';
 import Card from './Card';
 
-import data from '../cardData.json';
+import { cards, specs, heroes, starters, urlColorToColor, urlColorToSpecs, urlSpecToSpec, urlSpecToColor } from '../cardData.json';
 import { toURL } from '../utils';
 
 
 var DeckPage = ({ params, random, images }) => {
-	const { cards, specs, heroes, starters, urlColorToColor, urlColorToSpecs, urlSpecToSpec, urlSpecToColor } = data;
-
 	let { color, spec1, spec2, spec3 } = params;
 	let starter;
 	let deckSpecs;
