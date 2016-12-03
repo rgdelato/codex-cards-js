@@ -24,17 +24,18 @@ ReactDOM.render(
 	<BrowserRouter>
 		<Layout>
 			<Match exactly pattern="/" render={(props) => <HomePage {...props} /> } />
-			<Match exactly pattern="/general" render={(props) => <GeneralRulingsPage {...props} />} />
-			<Match exactly pattern="/ruling/:ruling" render={(props) => <RulingPage {...props} />} />
+
+			<Match pattern="/general" render={(props) => <GeneralRulingsPage {...props} />} />
+			<Match pattern="/ruling/:ruling" render={(props) => <RulingPage {...props} />} />
 
 			<Match pattern="/color/:color" render={(props) => <DeckPage {...props} />} />
-			<Match pattern="/deck/random" render={(props) => <DeckPage {...props} random={true} />} />
 			<Match pattern="/deck/:spec1/:spec2/:spec3" render={(props) => <DeckPage {...props} />} />
+			<Match pattern="/deck/random" render={(props) => <DeckPage {...props} random={true} />} />
 
-			<Match exactly pattern="/card/:card" render={(props) => <CardPage {...props} />} />
+			<Match pattern="/card/:card" render={(props) => <CardPage {...props} />} />
 
-			<Match exactly pattern="/maps" render={(props) => <MapsPage {...props} />} />
-			<Match exactly pattern="/map/:map" render={(props) => <MapPage {...props} />} />
+			<Match pattern="/maps" render={(props) => <MapsPage {...props} />} />
+			<Match pattern="/map/:map" render={(props) => <MapPage {...props} />} />
 
 			<Miss component={NotFoundPage}/>
 		</Layout>

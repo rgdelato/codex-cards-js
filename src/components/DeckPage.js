@@ -1,12 +1,12 @@
 import React from 'react';
-import { Match, Link } from 'react-router';
+import { Match, Miss, Link } from 'react-router';
 import Card from './Card';
+import CardNameList from './CardNameList';
 
 import { cards, specs, heroes, starters, urlColorToColor, urlColorToSpecs, urlSpecToSpec, urlSpecToColor } from '../cardData.json';
-import { toURL } from '../utils';
 
 
-var DeckPage = ({ pathname, params, random, images }) => {
+var DeckPage = ({ pathname, params, random }) => {
 	let { color, spec1, spec2, spec3 } = params;
 	let starter;
 	let deckSpecs;
@@ -42,103 +42,70 @@ var DeckPage = ({ pathname, params, random, images }) => {
 	}
 
 	return (
-		<Match pattern={`${pathname}/images`} children={({matched, ...props}) => (
-			<div className="deck-page">
+		<div className="deck-page">
 
-				<div style={{ marginTop: '16px' }}>
-					<small>
-						[ <Link to={(color) ? ('/color/' + color) : ('/deck/' + spec1 + '/' + spec2 + '/' + spec3)}>{deckSpecs[0]} {(deckSpecs[1]) ? ('/ ' + deckSpecs[1]) : null} {(deckSpecs[2]) ? ('/ ' + deckSpecs[2]) : null}</Link> ]
-					</small>
+			<div style={{ marginTop: '16px' }}>
+				<small>
+					[ <Link to={(color) ? ('/color/' + color) : ('/deck/' + spec1 + '/' + spec2 + '/' + spec3)}>{deckSpecs[0]} {(deckSpecs[1]) ? ('/ ' + deckSpecs[1]) : null} {(deckSpecs[2]) ? ('/ ' + deckSpecs[2]) : null}</Link> ]
+				</small>
 
-					<br />
+				<br />
 
-					<small>
-						[ <Link to={((color) ? ('/color/' + color) : ('/deck/' + spec1 + '/' + spec2 + '/' + spec3)) + '/images'}>All Images</Link> ]
-					</small>
-				</div>
+				<small>
+					[ <Link to={((color) ? ('/color/' + color) : ('/deck/' + spec1 + '/' + spec2 + '/' + spec3)) + '/images'}>All Images</Link> ]
+				</small>
+			</div>
 
-				{(matched) ? (
+			<Match pattern={`${pathname}/images`} render={() => {
+				const cardNames = [].concat(starters[starter], specs[deckSpecs[0]] || [], specs[deckSpecs[1]] || [], specs[deckSpecs[2]] || []);
+
+				return (
 					<div>
-						{starters[starter].map((name) => {
-							var card = cards[name];
+						{cardNames.map((name) => {
+							const card = cards[name];
 							return (
 								<Card name={card.name} />
 							);
 						})}
+					</div>
+				);
+			}} />
 
+			<Miss render={() => (
+				<div>
+					<div className="starter">
+						<div className="worker-image">
+							<div className="table-hack">
+								<div className="card-size table-cell-hack">
+									<h2>{starter} Starter</h2>
+								</div>
+							</div>
+						</div>
+
+						<div className="starter-list">
+							<CardNameList cardNames={starters[starter]} />
+						</div>
+					</div>
+
+					<div className="specs">
 						{deckSpecs.map((spec) => {
-							var cardNames = specs[spec];
-							return cardNames.map((name) => {
-								var card = cards[name];
-								return (
-									<Card name={card.name} />
-								);
-							});
+							const hero = cards[heroes[spec]];
+							const cardNames = specs[spec];
+
+							return (
+								<div className="spec" key={spec}>
+									<Card name={hero.name} />
+
+									<div className="spec-list">
+										<CardNameList cardNames={cardNames} />
+									</div>
+								</div>
+							);
 						})}
 					</div>
-
-				) : (
-					<div>
-						<div className="starter">
-							<div className="worker-image">
-								<div className="table-hack">
-									<div className="card-size table-cell-hack">
-										<h2>{starter} Starter</h2>
-									</div>
-								</div>
-							</div>
-
-							<div className="starter-list">
-								<div className="table-hack">
-									<div className="card-size table-cell-hack">
-										<blockquote>
-											{starters[starter].map((name) => {
-												var card = cards[name];
-												return (
-													<div className="ellipsis" key={card.name}>
-														<Link to={"/card/" + toURL(card.name)}>{card.name}</Link> - <small>{card.bottom}</small>
-													</div>
-												);
-											})}
-										</blockquote>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div className="specs">
-							{deckSpecs.map((spec) => {
-								var hero = cards[heroes[spec]];
-								var cardNames = specs[spec];
-								return (
-									<div className="spec" key={spec}>
-										<Card name={hero.name} />
-
-										<div className="spec-list">
-											<div className="table-hack">
-												<div className="card-size table-cell-hack">
-													<blockquote>
-														{cardNames.map((name) => {
-															var card = cards[name];
-															return (
-																<div className="ellipsis" key={name}>
-																	<Link to={"/card/" + toURL(card.name)}>{card.name}</Link> - <small>{card.bottom}</small>
-																</div>
-															);
-														})}
-													</blockquote>
-												</div>
-											</div>
-										</div>
-									</div>
-								);
-							})}
-						</div>
-					</div>
-				)}
-
-			</div>
-		)} />
+				</div>
+			)} />
+		</div>
 	);
 };
 
