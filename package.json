@@ -14,7 +14,7 @@
   },
   "scripts": {
     "start": "rm -rf build && node createCardDataJSON.js && react-scripts start",
-    "build": "rm -rf build && node createCardDataJSON.js && react-scripts build && mv build/index.html build/200.html",
+    "build": "rm -rf build && node createCardDataJSON.js && react-scripts build && cp build/index.html build/200.html",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "deploy": "npm run build && cp CNAME build/CNAME && cd build && surge"

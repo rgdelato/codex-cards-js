@@ -7,16 +7,13 @@ import { toURL } from '../utils';
 
 
 class Search extends React.Component {
-	constructor (props) {
-		super(props);
-		this.state = { searchText: '' };
-		this.handleChange = this.handleChange.bind(this);
-	}
 
-	handleChange (e) {
+	state = { searchText: '' };
+
+	handleChange = (e) => {
 		const searchText = e.target.value;
 		this.setState({searchText});
-	}
+	};
 
 	render () {
 		const { searchText } = this.state;
@@ -47,6 +44,9 @@ class Search extends React.Component {
 					}}
 					onSuggestionSelected={(e, {suggestion}) => { window.location = '/card/' + toURL(suggestion); }}
 					focusFirstSuggestion={true}
+
+					onSuggestionsFetchRequested={() => {}}
+					onSuggestionsClearRequested={() => {}}
 				/>
 
 			</div>

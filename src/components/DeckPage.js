@@ -1,5 +1,5 @@
 import React from 'react';
-import { Match, Miss, Link } from 'react-router';
+import { Match, Link } from 'react-router';
 import Card from './Card';
 import CardNameList from './CardNameList';
 
@@ -56,55 +56,63 @@ var DeckPage = ({ pathname, params, random }) => {
 				</small>
 			</div>
 
-			<Match pattern={`${pathname}/images`} render={() => {
-				const cardNames = [].concat(starters[starter], specs[deckSpecs[0]] || [], specs[deckSpecs[1]] || [], specs[deckSpecs[2]] || []);
+			<Match pattern={`${pathname}/images`}>
+				{({ matched }) => {
 
-				return (
-					<div>
-						{cardNames.map((name) => {
-							const card = cards[name];
-							return (
-								<Card name={card.name} />
-							);
-						})}
-					</div>
-				);
-			}} />
+					// "All Images" layout
+					if (matched) {
+						const cardNames = [].concat(starters[starter], specs[deckSpecs[0]] || [], specs[deckSpecs[1]] || [], specs[deckSpecs[2]] || []);
 
-			<Miss render={() => (
-				<div>
-					<div className="starter">
-						<div className="worker-image">
-							<div className="table-hack">
-								<div className="card-size table-cell-hack">
-									<h2>{starter} Starter</h2>
-								</div>
+						return (
+							<div>
+								{cardNames.map((name) => {
+									const card = cards[name];
+									return (
+										<Card key={card.name} name={card.name} />
+									);
+								})}
 							</div>
-						</div>
+						);
 
-						<div className="starter-list">
-							<CardNameList cardNames={starters[starter]} />
-						</div>
-					</div>
+					// Default Layout
+					} else {
+						return (
+							<div>
+								<div className="starter">
+									<div className="worker-image">
+										<div className="table-hack">
+											<div className="card-size table-cell-hack">
+												<h2>{starter} Starter</h2>
+											</div>
+										</div>
+									</div>
 
-					<div className="specs">
-						{deckSpecs.map((spec) => {
-							const hero = cards[heroes[spec]];
-							const cardNames = specs[spec];
-
-							return (
-								<div className="spec" key={spec}>
-									<Card name={hero.name} />
-
-									<div className="spec-list">
-										<CardNameList cardNames={cardNames} />
+									<div className="starter-list">
+										<CardNameList cardNames={starters[starter]} />
 									</div>
 								</div>
-							);
-						})}
-					</div>
-				</div>
-			)} />
+
+								<div className="specs">
+									{deckSpecs.map((spec) => {
+										const hero = cards[heroes[spec]];
+										const cardNames = specs[spec];
+
+										return (
+											<div className="spec" key={spec}>
+												<Card name={hero.name} />
+
+												<div className="spec-list">
+													<CardNameList cardNames={cardNames} />
+												</div>
+											</div>
+										);
+									})}
+								</div>
+							</div>
+						);
+					}
+				}}
+			</Match>
 		</div>
 	);
 };
