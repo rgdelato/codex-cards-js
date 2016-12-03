@@ -27,13 +27,9 @@ ReactDOM.render(
 			<Match exactly pattern="/general" render={(props) => <GeneralRulingsPage {...props} />} />
 			<Match exactly pattern="/ruling/:ruling" render={(props) => <RulingPage {...props} />} />
 
-			<Match exactly pattern="/color/:color" render={(props) => <DeckPage {...props} />} />
-			<Match exactly pattern="/color/:color/images" render={(props) => <DeckPage {...props} images={true} />} />
-
-			<Match exactly pattern="/deck/random" render={(props) => <DeckPage {...props} random={true} />} />
-			<Match exactly pattern="/deck/random/images" render={(props) => <DeckPage {...props} random={true} images={true} />} />
-			<Match exactly pattern="/deck/:spec1/:spec2/:spec3" render={(props) => <DeckPage {...props} />} />
-			<Match exactly pattern="/deck/:spec1/:spec2/:spec3/images" render={(props) => <DeckPage {...props} images={true} />} />
+			<Match pattern="/color/:color" render={(props) => <DeckPage {...props} />} />
+			<Match pattern="/deck/random" render={(props) => <DeckPage {...props} random={true} />} />
+			<Match pattern="/deck/:spec1/:spec2/:spec3" render={(props) => <DeckPage {...props} />} />
 
 			<Match exactly pattern="/card/:card" render={(props) => <CardPage {...props} />} />
 
