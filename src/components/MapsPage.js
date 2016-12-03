@@ -5,7 +5,7 @@ import data from '../cardData.json';
 import { toURL } from '../utils';
 
 
-var MapListPage = ({ route }) => {
+var MapListPage = () => {
     const { maps } = data;
 
 	return (

@@ -5,22 +5,22 @@ import data from '../cardData.json';
 import { toURL } from '../utils';
 
 
-var MapPage = ({ route, params }) => {
-		const { maps } = data;
+var MapPage = ({ params }) => {
+	const { maps } = data;
 
-		let card;
-		if (params.map === "random") {
-				const mapIndex = Math.floor(Math.random() * maps.length);
-				card = maps[mapIndex];
-		} else {
-				card = maps.find(function(mapCard) {
-						return toURL(mapCard.name) === params.map;
-				});
-		}
+	let card;
+	if (params.map === "random") {
+		const mapIndex = Math.floor(Math.random() * maps.length);
+		card = maps[mapIndex];
+	} else {
+		card = maps.filter(function(mapCard) {
+			return toURL(mapCard.name) === params.map;
+		})[0];
+	}
 
-		if(!card) {
-				window.location.replace('/404');
-		}
+	if (!card) {
+		window.location.replace('/404');
+	}
 
 	return (
 		<div className="card-page">

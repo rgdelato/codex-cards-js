@@ -3,10 +3,15 @@ import React from 'react';
 import data from '../cardData.json';
 
 
-var RulingPage = ({ route, params }) => {
+var RulingPage = ({ params }) => {
 	const { generalRulings, urlRulingToRuling } = data;
 	const urlRuling = params.ruling;
 	const rulingName = urlRulingToRuling[urlRuling];
+
+	if (!rulingName) {
+		window.location.replace('/404');
+	}
+
 	const abilityTextRuling = generalRulings[rulingName].filter((ruling) => ruling.abilityText)[0];
 	const abilityText = abilityTextRuling && abilityTextRuling.abilityText;
 

@@ -5,11 +5,11 @@ import { toURL } from '../utils';
 import data from '../cardData.json';
 
 
-var CardPage = ({ route, params }) => {
+var CardPage = ({ params, random }) => {
 	const { cards, urlCardToCard, generalRulings } = data;
 
 	let cardName;
-	if (route.random) {
+	if (params.card === 'random') {
 		const cardKeys = Object.keys(cards);
 		cardName = cardKeys[Math.floor(Math.random() * cardKeys.length)];
 	} else {

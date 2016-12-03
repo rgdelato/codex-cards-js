@@ -11,7 +11,7 @@ var Layout = (props) => {
 					<Link to="/">Codex Card Database</Link>
 				</div>
 
-				<Search data={props.route.data} />
+				<Search />
 			</div>
 			<div className="content">
 				{props.children}

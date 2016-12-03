@@ -5,14 +5,14 @@ import data from '../cardData.json';
 import { toURL } from '../utils';
 
 
-var DeckPage = ({ route, params }) => {
+var DeckPage = ({ params, random, images }) => {
 	const { cards, specs, heroes, starters, urlColorToColor, urlColorToSpecs, urlSpecToSpec, urlSpecToColor } = data;
 
 	let { color, spec1, spec2, spec3 } = params;
 	let starter;
 	let deckSpecs;
 
-	if (route.random) {
+	if (random) {
 		let specKeys = Object.keys(urlSpecToSpec);
 		let index1 = Math.floor(Math.random() * specKeys.length);
 		spec1 = specKeys[index1];
@@ -43,7 +43,7 @@ var DeckPage = ({ route, params }) => {
 	}
 
 	// TEMP: quick-fix to have a "show all images" view
-	if (route.images) {
+	if (images) {
 		return (
 			<div className="deck-page">
 

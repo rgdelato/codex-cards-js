@@ -93,6 +93,7 @@ blockquote {
 		border-style: solid;
 		border-color: #DDD;
 		background-color: white;
+		z-index: 10;
 	}
 
 	.search-container .search-results li,

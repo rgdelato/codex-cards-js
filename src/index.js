@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, IndexRoute, browserHistory, applyRouterMiddleware } from 'react-router';
-import { useScroll } from 'react-router-scroll';
+import { BrowserRouter, Match, Miss } from 'react-router';
 import Layout from './components/Layout';
 import HomePage from './components/HomePage';
 import GeneralPage from './components/GeneralPage';
@@ -22,23 +21,27 @@ if (window.location.toString().indexOf('//codexcards.surge.sh') !== -1) {
 
 
 ReactDOM.render(
-	<Router history={browserHistory} render={applyRouterMiddleware(useScroll())}>
-		<Route path="/" component={Layout}>
-			<IndexRoute component={HomePage} />
-			<Route path="/general" component={GeneralPage} />
-			<Route path="/ruling/:ruling" component={RulingPage} />
-			<Route path="/color/:color" component={DeckPage} />
-			<Route path="/color/:color/images" component={DeckPage} images={true} />
-			<Route path="/deck/random" component={DeckPage} random={true} />
-			<Route path="/deck/random/images" component={DeckPage} random={true} images={true} />
-			<Route path="/deck/:spec1/:spec2/:spec3" component={DeckPage} />
-			<Route path="/deck/:spec1/:spec2/:spec3/images" component={DeckPage} images={true} />
-			<Route path="/card/random" component={CardPage} random={true} />
-			<Route path="/card/:card" component={CardPage} />
-			<Route path="/maps" component={MapsPage} />
-			<Route path="/map/:map" component={MapPage} />
-			<Route path="*" component={NotFoundPage}/>
-		</Route>
-	</Router>,
+	<BrowserRouter>
+		<Layout>
+			<Match exactly pattern="/" render={(props) => <HomePage {...props} /> } />
+			<Match exactly pattern="/general" render={(props) => <GeneralPage {...props} />} />
+			<Match exactly pattern="/ruling/:ruling" render={(props) => <RulingPage {...props} />} />
+
+			<Match exactly pattern="/color/:color" render={(props) => <DeckPage {...props} />} />
+			<Match exactly pattern="/color/:color/images" render={(props) => <DeckPage {...props} images={true} />} />
+
+			<Match exactly pattern="/deck/random" render={(props) => <DeckPage {...props} random={true} />} />
+			<Match exactly pattern="/deck/random/images" render={(props) => <DeckPage {...props} random={true} images={true} />} />
+			<Match exactly pattern="/deck/:spec1/:spec2/:spec3" render={(props) => <DeckPage {...props} />} />
+			<Match exactly pattern="/deck/:spec1/:spec2/:spec3/images" render={(props) => <DeckPage {...props} images={true} />} />
+
+			<Match exactly pattern="/card/:card" render={(props) => <CardPage {...props} />} />
+
+			<Match exactly pattern="/maps" render={(props) => <MapsPage {...props} />} />
+			<Match exactly pattern="/map/:map" render={(props) => <MapPage {...props} />} />
+
+			<Miss component={NotFoundPage}/>
+		</Layout>
+	</BrowserRouter>,
 	document.getElementById('root')
 );
