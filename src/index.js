@@ -2,6 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Match, Miss } from 'react-router';
 import Layout from './components/Layout';
+import HomePage from './components/HomePage';
+import GeneralRulingsPage from './components/GeneralRulingsPage';
+import RulingPage from './components/RulingPage';
+import DeckPage from './components/DeckPage';
+import CardPage from './components/CardPage';
+import MapsPage from './components/MapsPage';
+import MapPage from './components/MapPage';
 import NotFoundPage from './components/NotFoundPage';
 
 import './normalize.css';
@@ -13,65 +20,23 @@ if (window.location.toString().indexOf('//codexcards.surge.sh') !== -1) {
 }
 
 
-
-class CodeSplit extends React.Component {
-	state = { Component: null };
-
-	componentDidMount () {
-		this.props.getComponent((Component) => {
-			this.setState({ Component: Component.default });
-		});
-	}
-
-	render () {
-		const { getComponent, ...props } = this.props; // eslint-disable-line no-unused-vars
-		const { Component } = this.state;
-
-		if (Component) {
-			return <Component {...props} />
-		} else {
-			return null;
-		}
-	}
-}
-
-
-
 ReactDOM.render(
 	<BrowserRouter>
 		<Layout>
+			<Match exactly pattern="/" component={HomePage} />
+			<Match pattern="/general" component={GeneralRulingsPage} />
+			<Match pattern="/ruling/:ruling" component={RulingPage} />
 
-			<Match exactly pattern="/" render={(props) =>
-				<CodeSplit {...props} getComponent={ (cb) => require.ensure([], (require) => cb(require('./components/HomePage')), 'HomePage') } />
-			} />
-
-			<Match pattern="/general" render={(props) =>
-				<CodeSplit {...props} getComponent={ (cb) => require.ensure([], (require) => cb(require('./components/GeneralRulingsPage')), 'GeneralRulingsPage') } />
-			} />
-			<Match pattern="/ruling/:ruling" render={(props) =>
-				<CodeSplit {...props} getComponent={ (cb) => require.ensure([], (require) => cb(require('./components/RulingPage')), 'RulingPage') } />
-			} />
-
-			<Match pattern="/color/:color" render={(props) =>
-				<CodeSplit {...props} getComponent={ (cb) => require.ensure([], (require) => cb(require('./components/DeckPage')), 'DeckPage') } />
-			} />
-			<Match pattern="/deck/:spec1/:spec2/:spec3" render={(props) =>
-				<CodeSplit {...props} getComponent={ (cb) => require.ensure([], (require) => cb(require('./components/DeckPage')), 'DeckPage') } />
-			} />
+			<Match pattern="/color/:color" component={DeckPage} />
+			<Match pattern="/deck/:spec1/:spec2/:spec3" component={DeckPage} />
 			<Match pattern="/deck/random" render={(props) =>
-				<CodeSplit {...props} random={true} getComponent={ (cb) => require.ensure([], (require) => cb(require('./components/DeckPage')), 'DeckPage') } />
+				<DeckPage {...props} random={true} />
 			} />
 
-			<Match pattern="/card/:card" render={(props) =>
-				<CodeSplit {...props} getComponent={ (cb) => require.ensure([], (require) => cb(require('./components/CardPage')), 'CardPage') } />
-			} />
+			<Match pattern="/card/:card" component={CardPage} />
 
-			<Match pattern="/maps" render={(props) =>
-				<CodeSplit {...props} getComponent={ (cb) => require.ensure([], (require) => cb(require('./components/MapsPage')), 'MapsPage') } />
-			} />
-			<Match pattern="/map/:map" render={(props) =>
-				<CodeSplit {...props} getComponent={ (cb) => require.ensure([], (require) => cb(require('./components/MapPage')), 'MapPage') } />
-			} />
+			<Match pattern="/maps" component={MapsPage} />
+			<Match pattern="/map/:map" component={MapPage} />
 
 			<Miss component={NotFoundPage}/>
 		</Layout>
