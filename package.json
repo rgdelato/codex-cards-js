@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "homepage": "http://codexcarddb.com/",
   "devDependencies": {
-    "react-scripts": "0.7.0"
+    "react-scripts": "0.7.0",
+    "@kadira/storybook": "^2.21.0"
   },
   "dependencies": {
     "react": "^15.4.1",
@@ -17,6 +18,8 @@
     "build": "rm -rf build && node createCardDataJSON.js && react-scripts build && cp build/index.html build/200.html",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "deploy": "npm run build && cp CNAME build/CNAME && cd build && surge"
+    "deploy": "npm run build && cp CNAME build/CNAME && cd build && surge",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   }
 }
