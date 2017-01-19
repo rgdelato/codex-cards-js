@@ -12,7 +12,7 @@ const Card = ({ name }) => {
 		return (
 			<div className="card-image">
 				<Link to={"/card/" + toURL(name)}>
-					<img src={"http://codexcards-assets.surge.sh/images/" + (card.sirlins_filename)} alt={name} />
+					<img src={"//res.cloudinary.com/rgdelato/image/fetch/f_auto/http://codexcards-assets.surge.sh/images/" + (card.sirlins_filename)} alt={name} />
 				</Link>
 			</div>
 		);

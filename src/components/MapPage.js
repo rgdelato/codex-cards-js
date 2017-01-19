@@ -28,7 +28,7 @@ var MapPage = ({ params }) => {
 
 			<div style={{ textAlign: 'center' }}>
 				<div className="card-image">
-					<img src={"http://codexcards-assets.surge.sh/images/" + card.filename} alt={card.name} />
+					<img src={"//res.cloudinary.com/rgdelato/image/fetch/f_auto/http://codexcards-assets.surge.sh/images/" + card.filename} alt={card.name} />
 				</div>
 
 				<div className="card-info">

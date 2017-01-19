@@ -11,7 +11,7 @@ var MapListPage = () => {
 			{maps.map((card) => {
 					return (
 						<div className="card-image-container" style={{display: 'inline-block'}} key={card.name}>
-							<Link to={"/map/" + toURL(card.name)}><img className="card-image" src={"http://codexcards-assets.surge.sh/images/" + card.filename} alt={card.name} /></Link>
+							<Link to={"/map/" + toURL(card.name)}><img className="card-image" src={"//res.cloudinary.com/rgdelato/image/fetch/f_auto/http://codexcards-assets.surge.sh/images/" + card.filename} alt={card.name} /></Link>
 						</div>
 					);
 				})}
