@@ -260,7 +260,16 @@
         },
         {
             "card": "Long-range",
-            "abilityText": "Defenders without long-range deal no damage to this when it attacks."
+            "abilityText": "Defenders without long-range deal no damage to this when it attacks.",
+            "ruling": "Long-range does not prevent anti-air patrollers that the attacker flies over from dealing damage.",
+            "date": "2017-01-08T08:00:00.000Z",
+            "author": "sharpo"
+        },
+        {
+            "card": "Long-range",
+            "ruling": "Long-range does not prevent towers from dealing damage.",
+            "date": "2017-01-08T08:00:00.000Z",
+            "author": "sharpo"
         },
         {
             "card": "Obliterate X",
@@ -271,7 +280,7 @@
         },
         {
             "card": "Obliterate X",
-            "ruling": "If there are any units that are indestructible or that can't leave play, ignore them when looking for the weakest unit. If such a thing would be their \"weakest unit\" then instead destroy their next weakest.",
+            "ruling": "If there are any units that are indestructible or that can't leave play, ignore them when looking for the lowest tech unit. If such a thing would be their \"lowest tech unit\" then instead destroy their next lowest.",
             "date": "2016-11-24T08:00:00.000Z",
             "author": "sharpo"
         },
@@ -556,6 +565,19 @@
             "ruling": "Limit: X on some kind of token applies to things that are that token before considering copy effects or Polymorph: Squirrel. So Quince's Mirror Illusion tokens will apply against his limit of 2 Mirror Illusions even if they are copying something else.",
             "date": "2016-11-24T08:00:00.000Z",
             "author": "sharpo"
+        },
+        {
+            "card": "Arrival Fatigue",
+            "abilityText": "All card type have arrival fatigue, which means the turn they come under your control, they can't use abilities that require exhausting as part of the cost. If they are units or heroes, it means they also can't attack the turn they come under your control. If a card has haste though, it CAN attack and use exhaust abilities the turn it comes under your control.",
+            "ruling": "Simplified, it means if the card is not under your control since the very beginning of your turn, it has arrival fatigue.",
+            "date": "2016-01-17T08:00:00.000Z",
+            "author": "Wildhorn"
+        },
+        {
+            "card": "Arrival Fatigue",
+            "ruling": "Arrival fatigue is tied to the card itself, so if a Sirus Quince's Mirror Illusion has been under your control since the beginning of your turn and it copies something, even if the copied card has arrival fatigue, the Mirror Illusion doesn't. The opposite is also true, if you summon a Mirror Illusion and copy something doesn't have arrival fatigue with Sirus Quince's midband, the Mirror Illusion still has arrival fatigue.",
+            "date": "2016-01-17T08:00:00.000Z",
+            "author": "Wildhorn"
         }
     ],
     "Neutral": [

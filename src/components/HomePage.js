@@ -72,7 +72,7 @@ class HomePage extends React.Component {
 
 				<br />
 
-				<div style={{ textAlign: 'center' }}>
+				<fieldset style={{ textAlign: 'center' }}>
 					<div style={{ fontSize: '0.875em' }}>
 						{[1,2,3].map((index) => (
 							<select key={'select_' + index} value={this.state[`spec${index}`]} onChange={(e) => this.setState({ [`spec${index}`]: e.target.value })}>
@@ -87,7 +87,7 @@ class HomePage extends React.Component {
 					<div>
 						<Link to={`/deck/${spec1}/${spec2}/${spec3}`}>Build Deck</Link>
 					</div>
-				</div>
+				</fieldset>
 			</div>
 		);
 	}
