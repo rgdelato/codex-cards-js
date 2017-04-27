@@ -159,7 +159,7 @@ let data = cardsJSON.reduce((acc, item) => {
 		item.bottom = 'Tech III';
 	} else if (item.type === 'Spell' || item.type === 'Ongoing Spell' || item.type === 'Minor Spell' || item.type === 'Minor Ongoing Spell') {
 		item.bottom = 'Magic';
-	} else if (item.type === 'Ultimate Spell' || item.type === 'Ultimate Ongoing Spell') {
+	} else if (item.type === 'Ultimate Spell' || item.type === 'Ultimate Ongoing Spell' || item.type === 'Ongoing Ultimate Spell') {
 		item.bottom = 'Ultimate Magic';
 	} else if (item.type === 'Hero') {
 		item.bottom = 'Hero';
