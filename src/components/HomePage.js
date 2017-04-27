@@ -1,103 +1,137 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import CardSearch from "./CardSearch";
+import { Card } from "semantic-ui-react";
+import DeckBuilder from "./DeckBuilder";
 
-import Search from "./Search";
+const HomePage = () => (
+  <div className="home-page">
 
-import { urlSpecToSpec } from "../cardData.json";
+    <br /><br />
 
-class HomePage extends React.Component {
-  constructor(props) {
-    super(props);
+    <div>
+      <h1>Codex Card Database</h1>
+      <p>Card Texts, Rulings, and Randomizers</p>
+    </div>
 
-    this.state = {
-      spec1: "discipline",
-      spec2: "ninjutsu",
-      spec3: "strength"
-    };
-  }
+    <br /><br />
 
-  render() {
-    const { spec1, spec2, spec3 } = this.state;
+    <CardSearch />
 
-    return (
-      <div className="home-page">
+    <br /><br />
+    <br /><br />
 
-        <div>
-          <h1>Codex Card Database</h1>
-          <p>Card Texts, Rulings, and Randomizers</p>
-        </div>
+    <Card.Group itemsPerRow={2}>
+      <Card
+        as={Link}
+        to="/color/red"
+        header="Blood Anarchs"
+        meta="Anarchy, Blood, Fire"
+        color="red"
+      />
 
-        <Search />
+      <Card
+        as={Link}
+        to="/color/green"
+        header="Moss Sentinels"
+        meta="Balance, Feral, Growth"
+        color="green"
+      />
 
-        <div className="banners">
-          <div className="banner">
-            <Link to="/general">General Rulings</Link>
-          </div>
+      <Card
+        as={Link}
+        to="/color/blue"
+        header="Flagstone Dominion"
+        meta="Law, Peace, Truth"
+        color="blue"
+      />
 
-          <div className="banner starter-banner">
-            <Link to="/color/neutral">Bashing vs. Finesse</Link>
-          </div>
+      <Card
+        as={Link}
+        to="/color/black"
+        header="Blackhand Scourge"
+        meta="Demonology, Disease, Necromancy"
+        color="black"
+      />
 
-          <div className="banner core-banner">
-            <span><Link to="/color/red">Blood Anarchs</Link></span>
-            <span> vs. </span>
-            <span><Link to="/color/green">Moss Sentinels</Link></span>
-          </div>
+      <Card
+        as={Link}
+        to="/color/white"
+        header="Whitestar Order"
+        meta="Discipline, Ninjutsu, Strength"
+        color="white"
+      />
 
-          <div className="banner core-banner">
-            <span><Link to="/color/blue">Flagstone Dominion</Link></span>
-            <span> vs. </span>
-            <span><Link to="/color/black">Blackhand Scourge</Link></span>
-          </div>
+      <Card
+        as={Link}
+        to="/color/purple"
+        header="Vortoss Conclave"
+        meta="Past, Present, Future"
+        color="purple"
+      />
+    </Card.Group>
 
-          <div className="banner core-banner">
-            <span><Link to="/color/white">Whitestar Order</Link></span>
-            <span> vs. </span>
-            <span><Link to="/color/purple">Vortoss Conclave</Link></span>
-          </div>
+    <Card.Group>
+      <Card centered={true} href="/color/red" header="General Rulings" />
+    </Card.Group>
 
-          <div className="banner">
-            <span><Link to="/maps">Map Cards</Link></span>
-          </div>
+    <Card.Group>
+      <Card centered={true} href="/maps" header="Map Cards" />
+    </Card.Group>
 
-          <div className="banner">
-            <span><Link to="/card/random">Random Card</Link></span>
-            <span> | </span>
-            <span><Link to="/deck/random">Random Deck</Link></span>
-            <span> | </span>
-            <span><Link to="/map/random">Random Map</Link></span>
-          </div>
-        </div>
+    <Card.Group itemsPerRow={3}>
+      <Card href="/card/random" header="Random Card" />
 
-        <br />
+      <Card href="/deck/random" header="Random Deck" />
 
-        <fieldset style={{ textAlign: "center" }}>
-          <div style={{ fontSize: "0.875em" }}>
-            {[1, 2, 3].map(index => (
-              <select
-                key={"select_" + index}
-                value={this.state[`spec${index}`]}
-                onChange={e =>
-                  this.setState({ [`spec${index}`]: e.target.value })}
-              >
-                {Object.keys(urlSpecToSpec).map(key => {
-                  const selectedInOtherDropdown = [1, 2, 3]
-                    .filter(item => item !== index)
-                    .some(item => this.state[`spec${item}`] === key);
-                  return !selectedInOtherDropdown &&
-                    <option key={key} value={key}>{urlSpecToSpec[key]}</option>;
-                })}
-              </select>
-            ))}
-          </div>
+      <Card href="/map/random" header="Random Map" />
+    </Card.Group>
 
-          <div>
-            <Link to={`/deck/${spec1}/${spec2}/${spec3}`}>Build Deck</Link>
-          </div>
-        </fieldset>
+    {/* <div className="banners">
+      <div className="banner">
+        <Link to="/general">General Rulings</Link>
       </div>
-    );
-  }
-}
+
+      <div className="banner starter-banner">
+        <Link to="/color/neutral">Bashing vs. Finesse</Link>
+      </div>
+
+      <div className="banner core-banner">
+        <span><Link to="/color/red">Blood Anarchs</Link></span>
+        <span> vs. </span>
+        <span><Link to="/color/green">Moss Sentinels</Link></span>
+      </div>
+
+      <div className="banner core-banner">
+        <span><Link to="/color/blue">Flagstone Dominion</Link></span>
+        <span> vs. </span>
+        <span><Link to="/color/black">Blackhand Scourge</Link></span>
+      </div>
+
+      <div className="banner core-banner">
+        <span><Link to="/color/white">Whitestar Order</Link></span>
+        <span> vs. </span>
+        <span><Link to="/color/purple">Vortoss Conclave</Link></span>
+      </div>
+
+      <div className="banner">
+        <span><Link to="/maps">Map Cards</Link></span>
+      </div>
+
+      <div className="banner">
+        <span><Link to="/card/random">Random Card</Link></span>
+        <span> | </span>
+        <span><Link to="/deck/random">Random Deck</Link></span>
+        <span> | </span>
+        <span><Link to="/map/random">Random Map</Link></span>
+      </div>
+    </div> */
+    }
+
+    {/* <br />
+
+    <DeckBuilder /> */}
+  </div>
+);
 
 export default HomePage;

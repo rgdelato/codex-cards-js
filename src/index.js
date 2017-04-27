@@ -12,7 +12,8 @@ import MapPage from "./components/MapPage";
 import NotFoundPage from "./components/NotFoundPage";
 
 import "./normalize.css";
-import "./global.css";
+import "semantic-ui-css/semantic.min.css";
+// import "./global.css";
 
 if (window.location.toString().indexOf("//codexcards.surge.sh") !== -1) {
   window.location.replace(
