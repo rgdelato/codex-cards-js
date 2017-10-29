@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { render } from "react-snapshot";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import HomePage from "./components/HomePage";
@@ -22,7 +22,7 @@ if (window.location.toString().indexOf("//codexcards.surge.sh") !== -1) {
   );
 }
 
-ReactDOM.render(
+render(
   <BrowserRouter>
     <Layout>
       <Switch>
